@@ -34,7 +34,6 @@
 	Delete which account:&nbsp;<input name="delete" type="text"><input value="Delete Account" type="submit"><br>
 </form><br>
 
-push pull commit github<br>
 er diagram<br>
 report<br><br>
 
