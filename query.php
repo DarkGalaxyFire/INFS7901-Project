@@ -1,15 +1,133 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>SQL Query</title>
-	<style>
-		table, th, td {
-		    border: 1px solid black;
-		    border-collapse: collapse;
-		}
-	</style>
+<title>Project - Home</title>
+<style>
+	html {
+		box-sizing: border-box;
+	}
+	*, *:before, *:after {
+		box-sizing: inherit;
+	}
+	body {
+		font-family: Helvetica, Arial, sans-serif;
+		line-height: 1.42857143;
+		font-size: 18px;
+		margin: 0;
+		padding: 0;
+		background-color: #f1f1f1;
+		color: #333;
+	}
+	table {
+	    border-collapse: collapse;
+	    vertical-align: bottom;
+	}
+	th {
+		background-color: #0d9072;
+		color: #fff;
+	}
+	tr {
+		color: ;
+	}
+	tr:nth-child(even) {
+		background-color: #1f2325;
+	}
+	tr:nth-child(odd) {
+		background-color: #191d20;
+	}
+	td {
+		color: #e0e0e0;
+	}
+	.poster {
+		display: block;
+		top: 0;
+		width: 100%;
+	}
+	.title {
+		position: absolute;
+		top: -2%;
+		width: 40%;
+		left: 30%;
+		display: block;
+	}
+	.header {
+		color: #f0e6d2;
+		font-size: 40px;
+		text-transform: uppercase;
+		text-align: center;
+		line-height: 0;
+		z-index: 100;
+	}
+	.subheader {
+		color: #c8aa6e;
+		font-size: 24px;
+		text-transform: uppercase;
+		text-align: center;
+		line-height: 0;
+	}
+	.navbar {
+		background-color: #121212;
+		border-bottom: 2px solid #262626;
+		font-size: 18px;
+		font-weight: 700;
+		height: 52px;
+		line-height: normal;
+		position: absolute;
+		margin-top: -0.6%;
+		text-align: left;
+		width: 100%;
+		font-size: 100%;
+		font: inherit;
+		z-index: 1000;
+		overflow: hidden;
+	}
+	.navbar-element {
+		display: inline-block;
+		float: left;
+		margin-top: 10px;
+		margin-left: 10%;
+	}
+	a {
+		color: #c9aa71;
+		text-decoration: none;
+	}
+	a:hover {
+		color: #f1e6d0;
+	}
+	a:active {
+		color: #fff;
+	}
+	.webpage-body {
+		display: block;
+		width: 100%;
+		padding-top: 70px;
+	}
+</style>
 </head>
+
 <body>
+<div class='title'>
+	<h3 class='header'>INFS 7901 Project</h3>
+	<h2 class='subheader'>Database Principles</h2>
+</div>
+<img class='poster' src="elder-drake.png">
+
+<div class='navbar'>
+	<div class='navbar-element'>
+		<a href='create.php' title='Instantiate all relations'>Create</a>
+	</div>
+	<div class='navbar-element'>
+		<a href='drop.php' title='Drop all tables in database'>Drop</a>
+	</div>
+	<div class='navbar-element'>
+		<a href='index.php' title='Return to index.php'>Home</a>
+	</div>
+	<div class='navbar-element'>
+		<a href='diagram.php' title='Dispaly ER Diagram'>Diagram</a>
+	</div>
+</div>
+
+<div class='webpage-body'>
 	<a href="index.php"><button>Return to index.php</button></a><br>
 <?php
 	################################################################################
@@ -603,7 +721,7 @@
 		if ($result->num_rows > 0 and $num == 1) {
 			echo "<table>\n\t
 				<tr>
-					<td>Region</td>   <td>Good Players</td>
+					<th>Region</th>   <th>Good Players</th>
 				</tr>
 			\n";
 			while ($row = mysqli_fetch_assoc($result)) {
@@ -619,8 +737,8 @@
 		} elseif ($result->num_rows > 0 and $num == 2) {
 			echo "<table>\n\t
 				<tr>
-					<td>Game Name</td>   <td>Riot Point Balance</td>
-					<td>Rank</td>   <td>serverID</td>
+					<th>Game Name</th>   <th>Riot Point Balance</th>
+					<th>Rank</th>   <th>serverID</th>
 				</tr>
 			\n";
 			while ($row = mysqli_fetch_assoc($result)) {
@@ -637,7 +755,7 @@
 		} elseif ($result->num_rows > 0 and $num == 3) {
 			echo "<table>\n\t
 				<tr>
-					<td>Game Name</td>   <td>Rank</td>
+					<th>Game Name</th>   <th>Rank</th>
 				</tr>
 			\n";
 			while ($row = mysqli_fetch_assoc($result)) {
@@ -653,7 +771,7 @@
 		} elseif ($result->num_rows > 0 and $num == 4) {
 			echo "<table>\n\t
 				<tr>
-					<td>Hero Name</td>   <td>Number of Skins</td>
+					<th>Hero Name</th>   <th>Number of Skins</th>
 				</tr>
 			\n";
 			while ($row = mysqli_fetch_assoc($result)) {
@@ -669,8 +787,8 @@
 		} elseif ($result->num_rows > 0 and $num == 5) {
 			echo "<table>\n\t
 				<tr>
-					<td>Hero Name</td>   <td>Skin Theme</td>
-					<td>Skin Rarity</td>   <td>Skin Price</td>
+					<th>Hero Name</th>   <th>Skin Theme</th>
+					<th>Skin Rarity</th>   <th>Skin Price</th>
 				</tr>
 			\n";
 			while ($row = mysqli_fetch_assoc($result)) {
@@ -687,8 +805,8 @@
 		} elseif ($result->num_rows > 0 and $num == 6) {
 			echo "<table>\n\t
 				<tr>
-					<td>Game Name</td>   <td>Total Spending</td>
-					<td>Number of Purchases</td>
+					<th>Game Name</th>   <th>Total Spending</th>
+					<th>Number of Purchases</th>
 				</tr>
 			\n";
 			while ($row = mysqli_fetch_assoc($result)) {
@@ -705,7 +823,7 @@
 		} elseif ($result->num_rows > 0 and $num == 7) {
 			echo "<table>\n\t
 				<tr>
-					<td>Game Name</td>
+					<th>Game Name</th>
 				</tr>
 			\n";
 			while ($row = mysqli_fetch_assoc($result)) {
@@ -721,7 +839,7 @@
 		} elseif ($result->num_rows > 0 and $num == 8) {
 			echo "<table>\n\t
 				<tr>
-					<td>Game Name</td>   <td>Average Purchase Amount</td>
+					<th>Game Name</th>   <th>Average Purchase Amount</th>
 				</tr>
 			\n";
 			while ($row = mysqli_fetch_assoc($result)) {
@@ -737,7 +855,7 @@
 		} elseif ($result->num_rows > 0 and $num == 9) {
 			echo "<table>\n\t
 				<tr>
-					<td>Game Name</td>   <td>Minimum Purchase Amount</td>
+					<th>Game Name</th>   <th>Minimum Purchase Amount</th>
 				</tr>
 			\n";
 			while ($row = mysqli_fetch_assoc($result)) {
@@ -753,8 +871,8 @@
 		} elseif ($result->num_rows > 0 and $num == 10) {
 			echo "<table>\n\t
 				<tr>
-					<td>Game Name</td>   <td>Hero Name</td>
-					<td>Theme</td>   <td>Rarity</td>
+					<th>Game Name</td>   <th>Hero Name</th>
+					<th>Theme</td>   <th>Rarity</th>
 				</tr>
 			\n";
 			while ($row = mysqli_fetch_assoc($result)) {
@@ -794,5 +912,6 @@
 		################################################################################
 	}
 ?>
+</div>
 </body>
 </html>

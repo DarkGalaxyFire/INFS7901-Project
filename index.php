@@ -1,42 +1,152 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-	<title>Hello World Webpage where Cute Kittens Reign Supreme!</title>
-	<style>
-		table, th, td {
-		    border: 1px solid black;
-		    border-collapse: collapse;
-		}
-	</style>
+<title>Project - Home</title>
+<style>
+	html {
+		box-sizing: border-box;
+	}
+	*, *:before, *:after {
+		box-sizing: inherit;
+	}
+	body {
+		font-family: Helvetica, Arial, sans-serif;
+		line-height: 1.42857143;
+		font-size: 18px;
+		margin: 0;
+		padding: 0;
+		background-color: #f1f1f1;
+		color: #333;
+	}
+	table {
+	    border-collapse: collapse;
+	    vertical-align: bottom;
+	}
+	th {
+		background-color: #0d9072;
+		color: #fff;
+	}
+	tr {
+		color: ;
+	}
+	tr:nth-child(even) {
+		background-color: #1f2325;
+	}
+	tr:nth-child(odd) {
+		background-color: #191d20;
+	}
+	td {
+		color: #e0e0e0;
+	}
+	.poster {
+		display: block;
+		top: 0;
+		width: 100%;
+	}
+	.title {
+		position: absolute;
+		top: -2%;
+		width: 40%;
+		left: 30%;
+		display: block;
+	}
+	.header {
+		color: #f0e6d2;
+		font-size: 40px;
+		text-transform: uppercase;
+		text-align: center;
+		line-height: 0;
+		z-index: 100;
+	}
+	.subheader {
+		color: #c8aa6e;
+		font-size: 24px;
+		text-transform: uppercase;
+		text-align: center;
+		line-height: 0;
+	}
+	.navbar {
+		background-color: #121212;
+		border-bottom: 2px solid #262626;
+		font-size: 18px;
+		font-weight: 700;
+		height: 52px;
+		line-height: normal;
+		position: absolute;
+		margin-top: -0.6%;
+		text-align: left;
+		width: 100%;
+		font-size: 100%;
+		font: inherit;
+		z-index: 1000;
+		overflow: hidden;
+	}
+	.navbar-element {
+		display: inline-block;
+		float: left;
+		margin-top: 10px;
+		margin-left: 10%;
+	}
+	a {
+		color: #c9aa71;
+		text-decoration: none;
+	}
+	a:hover {
+		color: #f1e6d0;
+	}
+	a:active {
+		color: #fff;
+	}
+	.webpage-body {
+		display: block;
+		width: 100%;
+		padding-top: 70px;
+	}
+</style>
 </head>
 
 <body>
+<div class='title'>
+	<h3 class='header'>INFS 7901 Project</h3>
+	<h2 class='subheader'>Database Principles</h2>
+</div>
+<img class='poster' src="elder-drake.png">
 
-<form action="drop.php" method="post">
-	Drop All Tables:&nbsp;<input name="drop" type="text"><input value="Delete Database" type="submit">
+<div class='navbar'>
+	<div class='navbar-element'>
+		<a href='create.php' title='Instantiate all relations'>Create</a>
+	</div>
+	<div class='navbar-element'>
+		<a href='drop.php' title='Drop all tables in database'>Drop</a>
+	</div>
+	<div class='navbar-element'>
+		<a href='index.php' title='Return to index.php'>Home</a>
+	</div>
+	<div class='navbar-element'>
+		<a href='diagram.php' title='Dispaly ER Diagram'>Diagram</a>
+	</div>
+</div>
+
+<div class='webpage-body'>
+	<form action="drop.php" method="post">
+		Drop All Tables:&nbsp;<input name="drop" type="text"><input value="Delete Database" type="submit">
+	</form>
+	<form action="create.php" method="post">
+		Create All Tables:&nbsp;<input name="create" type="text"><input value="Create Database" type="submit">
+	</form>
+	<br>
+	<form action="query.php" method="post">
+		Query number (8 is avg nested aggregate, 9 is min, 10 is division):&nbsp;<input name="query" type="text"><input value="Query" type="submit"><br>
+	</form><br>
+	<form action="query.php" method="post">
+		Purchase with account name:&nbsp;<input name="account" type="text">Skin theme:&nbsp;<input name="theme" type="text">Hero name:&nbsp;<input name="hero" type="text"><input value="Purchase" type="submit"><br>
+
+		Add points:&nbsp;<input name="amount" type="text">Account name:&nbsp;<input name="gameName" type="text"><input value="Add Points" type="submit"><br>
+
+		Delete which account:&nbsp;<input name="delete" type="text"><input value="Delete Account" type="submit"><br>
 </form>
-
-<form action="create.php" method="post">
-	Create All Tables:&nbsp;<input name="create" type="text"><input value="Create Database" type="submit">
-</form>
-<br>
-
-<form action="query.php" method="post">
-	Query number (8 is avg nested aggregate, 9 is min, 10 is division):&nbsp;<input name="query" type="text"><input value="Query" type="submit"><br>
-</form><br>
-
-<form action="query.php" method="post">
-	Purchase with account name:&nbsp;<input name="account" type="text">Skin theme:&nbsp;<input name="theme" type="text">Hero name:&nbsp;<input name="hero" type="text"><input value="Purchase" type="submit"><br>
-
-	Add points:&nbsp;<input name="amount" type="text">Account name:&nbsp;<input name="gameName" type="text"><input value="Add Points" type="submit"><br>
-
-	Delete which account:&nbsp;<input name="delete" type="text"><input value="Delete Account" type="submit"><br>
-</form><br>
-
+presentation<br>
 er diagram<br>
-report<br><br>
-
 <?php
 	################################################################################
 	# Connect to database                                                          #
@@ -65,8 +175,8 @@ report<br><br>
 	echo "Servers";
 	echo "<table>\n\t
 		<tr>
-			<td>ID</td>   <td>City</td>
-			<td>Region</td>
+			<th>ID</th>   <th>City</th>
+			<th>Region</th>
 		</tr>
 	\n";
 
@@ -89,8 +199,8 @@ report<br><br>
 	echo "Accounts";
 	echo "<table>\n\t
 		<tr>
-			<td>Game Name</td>   <td>Password</td>   <td>BE Balance</td>
-			<td>Riot Point Balance</td>   <td>Rank</td>   <td>Server Id</td>
+			<th>Game Name</th>   <th>Password</th>   <th>BE Balance</th>
+			<th>Riot Point Balance</th>   <th>Rank</th>   <th>Server Id</th>
 		</tr>
 	\n";
 
@@ -114,7 +224,7 @@ report<br><br>
 	echo "Products";
 	echo "<table>\n\t
 		<tr>
-			<td>ID</td>   <td>Price</td>
+			<th>ID</th>   <th>Price</th>
 		</tr>
 	\n";
 
@@ -136,8 +246,8 @@ report<br><br>
 	echo "Owns";
 	echo "<table>\n\t
 		<tr>
-			<td>Game Name</td>   <td>Product ID</td>
-			<td>Purchase Date</td>
+			<th>Game Name</th>   <th>Product ID</th>
+			<th>Purchase Date</th>
 		</tr>
 	\n";
 
@@ -160,8 +270,8 @@ report<br><br>
 	echo "Heroes";
 	echo "<table>\n\t
 		<tr>
-			<td>Hero Name</td>   <td>Class</td>
-			<td>Product ID</td>
+			<th>Hero Name</th>   <th>Class</th>
+			<th>Product ID</th>
 		</tr>
 	\n";
 
@@ -184,8 +294,8 @@ report<br><br>
 	echo "Skins";
 	echo "<table>\n\t
 		<tr>
-			<td>Product ID</td>   <td>Hero Name</td>
-			<td>Skin Theme</td>   <td>Rarity</td>
+			<th>Product ID</th>   <th>Hero Name</th>
+			<th>Skin Theme</th>   <th>Rarity</th>
 		</tr>
 	\n";
 
@@ -208,10 +318,10 @@ report<br><br>
 	echo "MatchHistory";
 	echo "<table>\n\t
 		<tr>
-			<td>Game Name</td>   <td>Start Time</td>
-			<td>End Time</td>   <td>Result</td>
-			<td>Party Size</td>   <td>Position</td>
-			<td>Hero Name</td>   <td>Skin Theme</td>
+			<th>Game Name</th>   <th>Start Time</th>
+			<th>End Time</th>   <th>Result</th>
+			<th>Party Size</th>   <th>Position</th>
+			<th>Hero Name</th>   <th>Skin Theme</th>
 		</tr>
 	\n";
 
@@ -302,6 +412,6 @@ report<br><br>
 	*/
 	################################################################################
 ?>
-
+</div>
 </body>
 </html>
