@@ -11,6 +11,8 @@
 	}
 	body {
 		font-family: Helvetica, Arial, sans-serif;
+		width: 100%;
+		height: 100%;
 		line-height: 1.42857143;
 		font-size: 18px;
 		margin: 0;
@@ -68,6 +70,7 @@
 	.navbar {
 		background-color: #121212;
 		border-bottom: 2px solid #262626;
+		border-top: 4px solid #836323;
 		font-size: 18px;
 		font-weight: 700;
 		height: 52px;
@@ -102,16 +105,94 @@
 		width: 100%;
 		padding-top: 70px;
 	}
+	.row {
+		position: relative;
+		display: block;
+		margin-top: -2.5%;
+		width: 100%;
+		height: 300px;
+		clear: both;
+	}
+	.clearfix::before, .clearfix::after {
+		content: "";
+		clear: both;
+		display: table;
+	}
+	.float-left {
+		width: 50%;
+		float: left;
+	}
+	.float-right {
+		width: 50%;
+		float: right;
+	}
+	.dropdown-function {
+		position: absolute;
+		top: 20%;
+		left: 10%;
+		width: 180px;
+	}
+	.dropdown-function:hover > .dropdown-content {
+		display: block;
+	}
+	.dropdown-button {
+		color: #c8aa6e;
+		background-color: #121212;
+		border: none;
+		width: 180px;
+		padding: 15px;
+		font-size: 18px;
+		cursor: pointer;
+	}
+	.dropdown-button:hover {
+		color: #f1e6d0;
+	}
+	.dropdown-content {
+		background-color: #121212;
+		display: none;
+		position: absolute;
+		padding-left: 15px;
+		min-width: 180px;
+		font-size: 18px;
+		border-top: 2px solid #262626;
+		z-index: 10;
+	}
+	.dropdown-content a {
+		color: #c8aa6e;
+	    padding: 12px 16px;
+	    text-decoration: none;
+	    display: block;
+	}
+	.dropdown-content a:hover {
+	    color: #f1e6d0;
+	}
+	.dropdown-content a:focus {
+		color: #fff;
+	}
+	.hidden {
+		display: none;
+	}
+	.tables-region {
+		width: 100%;
+		padding-top: 20px;
+		padding-left: 2%;
+		clear: both;
+	}
+	.table-title {
+		color: #222;
+		font-weight: 700;
+	}
 </style>
 </head>
 
 <body>
+<!-- TOP COVER -->
 <div class='title'>
 	<h3 class='header'>INFS 7901 Project</h3>
 	<h2 class='subheader'>Database Principles</h2>
 </div>
-<img class='poster' src="elder-drake.png">
-
+<img class='poster' src='elder-drake.png'>
+<!-- NAVBAR -->
 <div class='navbar'>
 	<div class='navbar-element'>
 		<a href='create.php' title='Instantiate all relations'>Create</a>
@@ -126,27 +207,59 @@
 		<a href='diagram.php' title='Dispaly ER Diagram'>Diagram</a>
 	</div>
 </div>
-
+<!-- INTERACTIVE AREA -->
 <div class='webpage-body'>
-	<form action="drop.php" method="post">
-		Drop All Tables:&nbsp;<input name="drop" type="text"><input value="Delete Database" type="submit">
-	</form>
-	<form action="create.php" method="post">
-		Create All Tables:&nbsp;<input name="create" type="text"><input value="Create Database" type="submit">
-	</form>
-	<br>
-	<form action="query.php" method="post">
-		Query number (8 is avg nested aggregate, 9 is min, 10 is division):&nbsp;<input name="query" type="text"><input value="Query" type="submit"><br>
-	</form><br>
-	<form action="query.php" method="post">
-		Purchase with account name:&nbsp;<input name="account" type="text">Skin theme:&nbsp;<input name="theme" type="text">Hero name:&nbsp;<input name="hero" type="text"><input value="Purchase" type="submit"><br>
-
-		Add points:&nbsp;<input name="amount" type="text">Account name:&nbsp;<input name="gameName" type="text"><input value="Add Points" type="submit"><br>
-
-		Delete which account:&nbsp;<input name="delete" type="text"><input value="Delete Account" type="submit"><br>
-</form>
-presentation<br>
-er diagram<br>
+<!-- ROW 1 -->
+<div class='row clearfix'>
+	<div class='float-left'>
+		<div class='dropdown-function'>
+			<button class='dropdown-button'>Query Number</button>
+			<div id='dropdown-query' class='dropdown-content'>
+				<a href='query.php?link=1'>Query 1</a>
+				<a href='query.php?link=2' name='query2'>Query 2</a>
+				<a href='query.php?link=3' name='query3'>Query 3</a>
+				<a href='query.php?link=4' name='query4'>Query 4</a>
+				<a href='query.php?link=5' name='query5'>Query 5</a>
+				<a href='query.php?link=6' name='query6'>Query 6</a>
+				<a href='query.php?link=7' name='query7'>Query 7</a>
+				<a href='query.php?link=8' name='query8'>Query 8</a>
+				<a href='query.php?link=9' name='query9'>Query 9</a>
+				<a href='query.php?link=10' name='query10'>Query 10</a>
+			</div>
+		</div>
+		<form action="query.php" method="post" class='hidden'>
+			Query number (8 is avg nested aggregate, 9 is min, 10 is division):&nbsp;<input name="query" type="text"><input value="Query" type="submit">
+		</form>
+	</div>
+	<img class='image float-right' src='star-guardian.png'>
+</div>
+<!-- ROW 2 -->
+<div class='row'>
+	<div class='float-right'>
+		<form action="query.php" method="post">
+			Purchase with account name:<br>
+			<input name="account" type="text"><br>
+			Skin theme:<br>
+			<input name="theme" type="text"><br>
+			Hero name:<br>
+			<input name="hero" type="text"><br>
+			<input value="Purchase" type="submit"><br>
+			Add points:<br>
+			<input name="amount" type="text"><br>
+			Account name:<br>
+			<input name="gameName" type="text"><br>
+			<input value="Add Points" type="submit"><br>
+			Delete which account:<br>
+			<input name="delete" type="text"><br>
+			<input value="Delete Account" type="submit"><br>
+		</form>
+	</div>
+	<div class='float-left'>
+		Some image
+	</div>
+</div>
+<!-- STATIC TABLES -->
+<div class='tables-region'>
 <?php
 	################################################################################
 	# Connect to database                                                          #
@@ -172,7 +285,7 @@ er diagram<br>
 	$result = $conn->query("SELECT * FROM Servers;");
 
 	// Table header
-	echo "Servers";
+	echo "<span class='table-title'>Servers</span>";
 	echo "<table>\n\t
 		<tr>
 			<th>ID</th>   <th>City</th>
@@ -196,7 +309,7 @@ er diagram<br>
 	$result = $conn->query("SELECT * FROM Accounts ORDER BY gameName;");
 
 	// Table header
-	echo "Accounts";
+	echo "<span class='table-title'>Accounts</span>";
 	echo "<table>\n\t
 		<tr>
 			<th>Game Name</th>   <th>Password</th>   <th>BE Balance</th>
@@ -221,7 +334,7 @@ er diagram<br>
 	$result = $conn->query("SELECT * FROM Products;");
 
 	// Table header
-	echo "Products";
+	echo "<span class='table-title'>Products</span>";
 	echo "<table>\n\t
 		<tr>
 			<th>ID</th>   <th>Price</th>
@@ -243,7 +356,7 @@ er diagram<br>
 	$result = $conn->query("SELECT * FROM Owns ORDER BY gameName, productID;");
 
 	// Table header
-	echo "Owns";
+	echo "<span class='table-title'>Owns</span>";
 	echo "<table>\n\t
 		<tr>
 			<th>Game Name</th>   <th>Product ID</th>
@@ -267,7 +380,7 @@ er diagram<br>
 	$result = $conn->query("SELECT * FROM Heroes ORDER BY class, name;");
 
 	// Table header
-	echo "Heroes";
+	echo "<span class='table-title'>Heroes</span>";
 	echo "<table>\n\t
 		<tr>
 			<th>Hero Name</th>   <th>Class</th>
@@ -291,7 +404,7 @@ er diagram<br>
 	$result = $conn->query("SELECT * FROM Skins ORDER BY heroName, theme, rarity;");
 
 	// Table header
-	echo "Skins";
+	echo "<span class='table-title'>Skins</span>";
 	echo "<table>\n\t
 		<tr>
 			<th>Product ID</th>   <th>Hero Name</th>
@@ -315,7 +428,7 @@ er diagram<br>
 	$result = $conn->query("SELECT * FROM MatchHistory ORDER BY gameName, heroName;");
 
 	// Table header
-	echo "MatchHistory";
+	echo "<span class='table-title'>Match History</span>";
 	echo "<table>\n\t
 		<tr>
 			<th>Game Name</th>   <th>Start Time</th>
@@ -412,6 +525,7 @@ er diagram<br>
 	*/
 	################################################################################
 ?>
+</div>
 </div>
 </body>
 </html>

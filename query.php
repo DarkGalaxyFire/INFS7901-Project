@@ -362,11 +362,15 @@
 	################################################################################
 	# Define which query runs                                                      #
 	################################################################################
-
-	if (empty($_REQUEST["query"])) {
-		echo "No query selected";
-	} else {
+	if (!empty($_GET["link"])) {
+		$num = $_GET["link"];
+	} elseif (!empty($_REQUEST["query"])) {
 		$num = $_REQUEST["query"];
+	} else {
+		echo "No query selected";
+	}
+
+	if ($num) {
 		echo "**************************************************<br>\n";
 		echo "Your query number was: ", $num, "<br>\n";
 
