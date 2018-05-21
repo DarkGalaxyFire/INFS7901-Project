@@ -3,12 +3,14 @@
 <head>
 <title>Project - Home</title>
 <style>
+	/* Reset box model */
 	html {
 		box-sizing: border-box;
 	}
 	*, *:before, *:after {
 		box-sizing: inherit;
 	}
+	/* Body defaults */
 	body {
 		font-family: Helvetica, Arial, sans-serif;
 		line-height: 1.42857143;
@@ -18,6 +20,7 @@
 		background-color: #f1f1f1;
 		color: #333;
 	}
+	/* Table styling */
 	table {
 	    border-collapse: collapse;
 	    vertical-align: bottom;
@@ -38,6 +41,7 @@
 	td {
 		color: #e0e0e0;
 	}
+	/* Top cover */
 	.poster {
 		display: block;
 		top: 0;
@@ -65,6 +69,7 @@
 		text-align: center;
 		line-height: 0;
 	}
+	/* Navigation bar */
 	.navbar {
 		background-color: #121212;
 		border-bottom: 2px solid #262626;
@@ -97,6 +102,7 @@
 	a:active {
 		color: #fff;
 	}
+	/* Entire body of webpage */
 	.webpage-body {
 		display: block;
 		width: 100%;
@@ -106,12 +112,13 @@
 </head>
 
 <body>
+<!-- TOP COVER -->
 <div class='title'>
 	<h3 class='header'>INFS 7901 Project</h3>
 	<h2 class='subheader'>Database Principles</h2>
 </div>
 <img class='poster' src="elder-drake.png">
-
+<!-- NAVBAR -->
 <div class='navbar'>
 	<div class='navbar-element'>
 		<a href='create.php' title='Instantiate all relations'>Create</a>
@@ -126,7 +133,7 @@
 		<a href='diagram.php' title='Dispaly ER Diagram'>Diagram</a>
 	</div>
 </div>
-
+<!-- WEBPAGE BODY -->
 <div class='webpage-body'>
 	<a href="index.php"><button>Return to index.php</button></a><br>
 <?php

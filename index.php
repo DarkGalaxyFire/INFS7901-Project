@@ -3,12 +3,14 @@
 <head>
 <title>Project - Home</title>
 <style>
+	/* Reset box model */
 	html {
 		box-sizing: border-box;
 	}
 	*, *:before, *:after {
 		box-sizing: inherit;
 	}
+	/* Body defaults */
 	body {
 		font-family: Helvetica, Arial, sans-serif;
 		width: 100%;
@@ -20,6 +22,7 @@
 		background-color: #f1f1f1;
 		color: #333;
 	}
+	/* Table styling */
 	table {
 	    border-collapse: collapse;
 	    vertical-align: bottom;
@@ -40,6 +43,7 @@
 	td {
 		color: #e0e0e0;
 	}
+	/* Top cover */
 	.poster {
 		display: block;
 		top: 0;
@@ -67,6 +71,7 @@
 		text-align: center;
 		line-height: 0;
 	}
+	/* Navigation bar */
 	.navbar {
 		background-color: #121212;
 		border-bottom: 2px solid #262626;
@@ -100,6 +105,7 @@
 	a:active {
 		color: #fff;
 	}
+	/* Entire body of webpage */
 	.webpage-body {
 		display: block;
 		width: 100%;
@@ -112,6 +118,13 @@
 		width: 100%;
 		height: 300px;
 		clear: both;
+	}
+	.row-top {
+		border-top: 8px solid #c3a568;
+		/* Introduces some strange whitespace so this is left out
+    	border-image: linear-gradient(to right,#836323 0,#c3a568 51%,#836323 100%);
+	    border-image-slice: 1;
+	    */
 	}
 	.clearfix::before, .clearfix::after {
 		content: "";
@@ -126,10 +139,21 @@
 		width: 50%;
 		float: right;
 	}
+	/* First query part */
+	.query-text {
+		position: absolute;
+		padding: 15px;
+		font-weight: 700;
+	}
+	.query-select {
+		top: 20%;
+		left: 30px;
+		width: 270px;
+	}
 	.dropdown-function {
 		position: absolute;
 		top: 20%;
-		left: 10%;
+		left: 290px;
 		width: 180px;
 	}
 	.dropdown-function:hover > .dropdown-content {
@@ -172,6 +196,11 @@
 	.hidden {
 		display: none;
 	}
+	/* Second query part */
+
+
+
+	/* Tables */
 	.tables-region {
 		width: 100%;
 		padding-top: 20px;
@@ -204,7 +233,7 @@
 		<a href='index.php' title='Return to index.php'>Home</a>
 	</div>
 	<div class='navbar-element'>
-		<a href='diagram.php' title='Dispaly ER Diagram'>Diagram</a>
+		<a href='diagram.php' title='Display ER Diagram'>Diagram</a>
 	</div>
 </div>
 <!-- INTERACTIVE AREA -->
@@ -212,6 +241,7 @@
 <!-- ROW 1 -->
 <div class='row clearfix'>
 	<div class='float-left'>
+		<div class='query-text query-select'>Select Which Query to Run: </div>
 		<div class='dropdown-function'>
 			<button class='dropdown-button'>Query Number</button>
 			<div id='dropdown-query' class='dropdown-content'>
@@ -234,32 +264,42 @@
 	<img class='image float-right' src='star-guardian.png'>
 </div>
 <!-- ROW 2 -->
-<div class='row'>
+<div class='row clearfix row-top'>
 	<div class='float-right'>
 		<form action="query.php" method="post">
-			Purchase with account name:<br>
+			<div class='query-text'>Purchase with account name:</div><br>
 			<input name="account" type="text"><br>
-			Skin theme:<br>
+			<div class='query-text'>Skin theme:</div><br>
 			<input name="theme" type="text"><br>
-			Hero name:<br>
+			<div class='query-text'>Hero name:</div><br>
 			<input name="hero" type="text"><br>
 			<input value="Purchase" type="submit"><br>
-			Add points:<br>
-			<input name="amount" type="text"><br>
-			Account name:<br>
-			<input name="gameName" type="text"><br>
-			<input value="Add Points" type="submit"><br>
-			Delete which account:<br>
-			<input name="delete" type="text"><br>
-			<input value="Delete Account" type="submit"><br>
 		</form>
 	</div>
+	<img class='image float-left' src='project-katarina.png'>
+</div>
+<!-- ROW 3 -->
+<div class='row clearfix row-top'>
 	<div class='float-left'>
-		Some image
+		<div class='query-text'>Add points:</div><br>
+		<input name="amount" type="text"><br>
+		<div class='query-text'>Account name:</div><br>
+		<input name="gameName" type="text"><br>
+		<input value="Add Points" type="submit"><br>
+	</div>
+	<img class='float-right' src='victorious-sivir.png'>
+</div>
+<!-- ROW 4 -->
+<div class='row clearfix row-top'>
+	<img class='float-left' src='cyberpop-zoe.png'>
+	<div class='float-right'>
+		<div class='query-text'>Delete which account:</div><br>
+		<input name="delete" type="text"><br>
+		<input value="Delete Account" type="submit"><br>
 	</div>
 </div>
 <!-- STATIC TABLES -->
-<div class='tables-region'>
+<div class='tables-region row-top'>
 <?php
 	################################################################################
 	# Connect to database                                                          #
