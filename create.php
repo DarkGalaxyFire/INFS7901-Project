@@ -3,14 +3,14 @@
 <head>
 <title>Project - Home</title>
 <style>
-	/* Reset box model */
+	/* RESET BOX MODEL */
 	html {
 		box-sizing: border-box;
 	}
 	*, *:before, *:after {
 		box-sizing: inherit;
 	}
-	/* Body defaults */
+	/* DEFAULTS FOR BODY */
 	body {
 		font-family: Helvetica, Arial, sans-serif;
 		width: 100%;
@@ -22,7 +22,7 @@
 		background-color: #f1f1f1;
 		color: #333;
 	}
-	/* Table styling */
+	/* STYLING FOR ALL TABLES SHARED ACROSS ALL PAGES */
 	table {
 	    border-collapse: collapse;
 	    vertical-align: bottom;
@@ -44,7 +44,7 @@
 		color: #e0e0e0;
 		padding-right: 20px;
 	}
-	/* Top cover */
+	/* AREA ABOVE NAVIGATION BAR */
 	.poster {
 		display: block;
 		top: 0;
@@ -72,29 +72,32 @@
 		text-align: center;
 		line-height: 0;
 	}
-	/* Navigation bar */
+	/* NAVIGATION BAR */
 	.navbar {
 		background-color: #121212;
 		border-bottom: 2px solid #262626;
 		border-top: 4px solid #836323;
-		font-size: 18px;
-		font-weight: 700;
-		height: 52px;
+		font-size: 20px;
+		font-family: inherit;
+		height: 60px;
 		line-height: normal;
 		position: absolute;
 		margin-top: -0.6%;
 		text-align: left;
 		width: 100%;
-		font-size: 100%;
-		font: inherit;
 		z-index: 1000;
 		overflow: hidden;
 	}
 	.navbar-element {
 		display: inline-block;
 		float: left;
-		margin-top: 10px;
-		margin-left: 10%;
+		padding-top: 15px;
+		padding-left: 50px;
+		padding-right: 50px;
+		height: 100%;
+	}
+	.navbar-element:hover {
+		background-color: #333;
 	}
 	a {
 		color: #c9aa71;
@@ -106,58 +109,66 @@
 	a:active {
 		color: #fff;
 	}
-	/* Button */
+	/* STYLING SHARED ACROSS ALL BUTTONS */
 	.button {
 		color: #c8aa6e;
 		background-color: #121212;
 		border: none;
-		font-size: 18px;
+		font: inherit;
 		height: 50px;
 		width: 180px;
 	}
 	.button:hover {
 		color: #f1e6d0;
+		background-color: #333;
 		cursor: pointer;
 	}
 	.button:active {
 		color: #fff;
 	}
-	/* Hide debugging messages or redundant features */
+	/* HIDE DEBUGGING MESSAGES OR REDUNDANT FEATURES */
 	.hidden {
 		display: none;
 	}
 	/* ^^^ SHARED AMONG ALL WEBPAGES ^^^ */
-	/* Entire body of webpage */
+	/* AREA UNDER NAVBAR */
 	.webpage-body {
+		position: absolute;
 		display: block;
 		width: 100%;
 		padding-top: 70px;
 	}
+	.error {
+		margin-left: 50px;
+	}
+	.query {
+		margin-left: 50px;
+	}
 </style>
 </head>
-
 <body>
+<!-- TOP COVER -->
 <div class='title'>
 	<h3 class='header'>INFS 7901 Project</h3>
 	<h2 class='subheader'>Database Principles</h2>
 </div>
 <img class='poster' src="elder-drake.png">
-
+<!-- NAVBAR -->
 <div class='navbar'>
-	<div class='navbar-element'>
-		<a href='create.php' title='Instantiate all relations'>Create</a>
-	</div>
-	<div class='navbar-element'>
-		<a href='drop.php' title='Drop all tables in database'>Drop</a>
-	</div>
-	<div class='navbar-element'>
-		<a href='index.php' title='Return to index.php'>Home</a>
-	</div>
-	<div class='navbar-element'>
-		<a href='diagram.php' title='Dispaly ER Diagram'>Diagram</a>
-	</div>
+	<a href='index.php' title='Return to index.php'>
+		<div class='navbar-element'>Home</div>
+	</a>
+	<a href='create.php' title='Instantiate all relations'>
+		<div class='navbar-element'>Create</div>
+	</a>
+	<a href='drop.php' title='Drop all tables in database'>
+		<div class='navbar-element'>Drop</div>
+	</a>
+	<a href='diagram.php' title='Display ER Diagram'>
+		<div class='navbar-element'>Diagram</div>
+	</a>
 </div>
-
+<!-- WEBPAGE AREA -->
 <div class='webpage-body'>
 <?php
 	################################################################################
@@ -177,13 +188,15 @@
 
 	################################################################################
 
-	// display user entered text
-	echo "You entered: ", $_POST["create"], "<br><br>";
+	/* NEW FEATURES ADDED SO NO LONGER NEEDED
+		// display user entered text
+		echo "You entered: ", $_POST["create"], "<br><br>";
+	*/
 
 	// SQL query to run
 	$sql = "
 CREATE TABLE Servers (
-	id	    INT             NOT NULL,
+	id  	INT             NOT NULL,
 	city	VARCHAR(100)	NOT NULL,
 	region	VARCHAR(100)	NOT NULL,
 	PRIMARY KEY (id)
@@ -198,10 +211,10 @@ INSERT INTO Servers VALUES (5, 'Canberra', 'Oceania');
 CREATE TABLE Accounts (
 	gameName	VARCHAR(50)	NOT NULL,
 	password	VARCHAR(50)	NOT NULL,
-	balanceBlue	INT			DEFAULT 0,
-	balanceRiot	INT			DEFAULT 0,
+	balanceBlue	INT 		DEFAULT 0,
+	balanceRiot	INT 		DEFAULT 0,
 	seasonRank	INT,
-	serverID	INT			NOT NULL,
+	serverID	INT 		NOT NULL,
 	PRIMARY KEY (gameName),
 	FOREIGN KEY (serverID) REFERENCES Servers(id) ON DELETE CASCADE
 );
@@ -232,8 +245,8 @@ INSERT INTO Accounts VALUES ('VickTorious Kimchi', 'gdragonbemine', 1700, 1900, 
 
 
 CREATE TABLE Products (
-	id	    INT 	NOT NULL,
-	price	INT	    NOT NULL,
+	id   	INT   		NOT NULL,
+	price	INT 		NOT NULL,
 	PRIMARY KEY (id)
 );
 INSERT INTO products VALUES (1, 260);
@@ -261,9 +274,9 @@ INSERT INTO Products VALUES (22, 1820);
 
 
 CREATE TABLE Owns (
-	gameName    	VARCHAR(50)	    NOT NULL,
-	productID	    INT			    NOT NULL,
-	purchaseDate	TIMESTAMP       NOT NULL,
+	gameName    		VARCHAR(50)		NOT NULL,
+	productID   		INT        		NOT NULL,
+	purchaseDate 		TIMESTAMP 		NOT NULL,
 	PRIMARY KEY (gameName, productID),
 	FOREIGN KEY (gameName) REFERENCES Accounts(gameName)  ON DELETE CASCADE,
 	FOREIGN KEY (productID) REFERENCES Products(id)  ON DELETE CASCADE
@@ -313,9 +326,9 @@ INSERT INTO Owns VALUES ('Key Key', 12, TIMESTAMP '2018-03-24 11:27:32');
 
 
 CREATE TABLE Heroes (
-    name 		VARCHAR(50)	 NOT NULL ,
-    class		VARCHAR(50)	 NOT NULL,
-    productID	INT		   	NOT NULL,
+    name    		VARCHAR(50) 		NOT NULL,
+    class   		VARCHAR(50) 		NOT NULL,
+    productID 		INT 	        	NOT NULL,
     PRIMARY KEY (name),
     FOREIGN KEY (productID) REFERENCES Products(id) ON DELETE CASCADE
 );
@@ -328,10 +341,10 @@ INSERT INTO Heroes VALUES ('Rakan', 'Support', 6);
 
 
 CREATE TABLE Skins (
-    theme    	VARCHAR(50)	    DEFAULT 'Classic',
-    heroName    VARCHAR(50)     NOT NULL,
-    productID	INT 			NOT NULL,
-    rarity		VARCHAR(20)		NOT NULL,
+    theme    			VARCHAR(50)	  	DEFAULT 'Classic',
+    heroName  		 	VARCHAR(50)		NOT NULL,
+    productID 			INT 			NOT NULL,
+    rarity 		    	VARCHAR(20)		NOT NULL,
     PRIMARY KEY (theme, heroName),
     FOREIGN KEY (productID) REFERENCES Products(id) ON DELETE CASCADE,
     FOREIGN KEY (heroName) REFERENCES Heroes(name) ON DELETE CASCADE
@@ -389,20 +402,25 @@ INSERT INTO MatchHistory VALUES ('Key Key', TIMESTAMP '2018-03-25 03:00:00', TIM
 	# Execute the SQL query                                                        #
 	################################################################################
 
-	// split entire SQL into individual queries
-	$arr = explode(";", $sql);
-	foreach ($arr as $query) {
-		// print each query
-		echo $query, ";<br>";
-	}
-	echo "<br>";
+	/*
+		// split entire SQL into individual queries
+		$arr = explode(";", $sql);
+		foreach ($arr as $query) {
+			// print each query
+			echo $query, ";<br>";
+		}
+		echo "<br>";
+	*/
 
-	// for debugging
+	// print errors for debugging
 	if ($conn->multi_query($sql) === TRUE) {
-	    echo "<br>SQL query executed successfully";
+	    echo "<div class='error'>All tables successfully created</div>";
 	} else {
-	    echo "<br>Error: " . $sql . "<br><br>" . $conn->error;
+	    echo "<div class='error'>Error: " . $conn->error . "</div>";
 	}
+
+	// print SQL used in query
+	echo "<pre class='query'>" . $sql . "</pre>";
 
 	// Close connection
 	$conn->close();

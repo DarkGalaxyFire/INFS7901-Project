@@ -3,14 +3,14 @@
 <head>
 <title>Project - Home</title>
 <style>
-	/* Reset box model */
+	/* RESET BOX MODEL */
 	html {
 		box-sizing: border-box;
 	}
 	*, *:before, *:after {
 		box-sizing: inherit;
 	}
-	/* Body defaults */
+	/* DEFAULTS FOR BODY */
 	body {
 		font-family: Helvetica, Arial, sans-serif;
 		width: 100%;
@@ -22,7 +22,7 @@
 		background-color: #f1f1f1;
 		color: #333;
 	}
-	/* Table styling */
+	/* STYLING FOR ALL TABLES SHARED ACROSS ALL PAGES */
 	table {
 	    border-collapse: collapse;
 	    vertical-align: bottom;
@@ -44,7 +44,7 @@
 		color: #e0e0e0;
 		padding-right: 20px;
 	}
-	/* Top cover */
+	/* AREA ABOVE NAVIGATION BAR */
 	.poster {
 		display: block;
 		top: 0;
@@ -72,29 +72,32 @@
 		text-align: center;
 		line-height: 0;
 	}
-	/* Navigation bar */
+	/* NAVIGATION BAR */
 	.navbar {
 		background-color: #121212;
 		border-bottom: 2px solid #262626;
 		border-top: 4px solid #836323;
-		font-size: 18px;
-		font-weight: 700;
-		height: 52px;
+		font-size: 20px;
+		font-family: inherit;
+		height: 60px;
 		line-height: normal;
 		position: absolute;
 		margin-top: -0.6%;
 		text-align: left;
 		width: 100%;
-		font-size: 100%;
-		font: inherit;
 		z-index: 1000;
 		overflow: hidden;
 	}
 	.navbar-element {
 		display: inline-block;
 		float: left;
-		margin-top: 10px;
-		margin-left: 10%;
+		padding-top: 15px;
+		padding-left: 50px;
+		padding-right: 50px;
+		height: 100%;
+	}
+	.navbar-element:hover {
+		background-color: #333;
 	}
 	a {
 		color: #c9aa71;
@@ -106,37 +109,36 @@
 	a:active {
 		color: #fff;
 	}
-	/* Button */
+	/* STYLING SHARED ACROSS ALL BUTTONS */
 	.button {
 		color: #c8aa6e;
 		background-color: #121212;
 		border: none;
-		font-size: 20px;
+		font: inherit;
 		height: 50px;
 		width: 180px;
 	}
 	.button:hover {
 		color: #f1e6d0;
+		background-color: #333;
 		cursor: pointer;
 	}
 	.button:active {
 		color: #fff;
 	}
-	/* Image */
-	.image {
-		margin-top: -0.7px;
-	}
-	/* Hide debugging messages or redundant features */
+	/* HIDE DEBUGGING MESSAGES OR REDUNDANT FEATURES */
 	.hidden {
 		display: none;
 	}
 	/* ^^^ SHARED AMONG ALL WEBPAGES ^^^ */
-	/* Entire body of webpage */
+	/* AREA UNDER NAVBAR */
 	.webpage-body {
+		position: absolute;
 		display: block;
 		width: 100%;
 		padding-top: 70px;
 	}
+	/* HORIZONTAL ROWS */
 	.clearfix::before, .clearfix::after {
 		content: "";
 		clear: both;
@@ -165,11 +167,11 @@
 		width: 50%;
 		float: right;
 	}
-	/* First query part */
+	/* QUERY IN FIRST ROW WITH DROPDOWN MENU */
 	.query-select {
 		position: absolute;
-		top: 65px;
-		left: 30px;
+		top: 200px;
+		left: 75px;
 		width: 80%;
 	}
 	.query-text {
@@ -179,6 +181,7 @@
 	}
 	.dropdown-function {
 		position: absolute;
+		font-size: 20px;
 		top: -10px;
 		left: 275px;
 		width: 180px;
@@ -190,33 +193,36 @@
 		background-color: #121212;
 		display: none;
 		position: absolute;
-		padding-left: 10px;
 		min-width: 180px;
-		font-size: 20px;
+		font: inherit;
 		border-top: 2px solid #262626;
 		z-index: 10;
 	}
 	.dropdown-content a {
 		color: #c8aa6e;
-	    padding: 12px 16px;
+	    padding-top: 10px;
+	    padding-bottom: 10px;
+	    padding-right: 10px;
+	    padding-left: 25px;
 	    text-decoration: none;
 	    display: block;
 	}
 	.dropdown-content a:hover {
 	    color: #f1e6d0;
+	    background-color: #333;
 	}
 	.dropdown-content a:active {
 		color: #fff;
 	}
-	/* Second, Third, and Fourth query part */
+	/* QUERIES IN SECOND, THIRD, AND FOURTH ROWS */
 	input {
 		color: #9b9b9b;
 		font-size: 20px;
 	}
 	.query {
 		position: absolute;
-		left: 20px;
-		top: 20px;
+		left: 75px;
+		top: 30px;
 		font-weight: 700;
 		width: 400px;
 		font-size: 20px;
@@ -231,29 +237,29 @@
 	}
 	.query-3 {
 		position: absolute;
-		top: 70px;
+		top: 80px;
 	}
 	.query-4 {
 		position: absolute;
-		top: 100px;
+		top: 110px;
 	}
 	.query-5 {
 		position: absolute;
-		top: 140px;
+		top: 160px;
 	}
 	.query-6 {
 		position: absolute;
-		top: 170px;
+		top: 190px;
 	}
 	.query-7 {
 		position: absolute;
-		top: 210px;
+		top: 240px;
 	}
-	/* Tables */
+	/* DATABASE TABLES */
 	.tables-region {
 		width: 100%;
 		padding-top: 20px;
-		padding-left: 2%;
+		padding-left: 30px;
 		clear: both;
 	}
 	.table-title {
@@ -262,7 +268,6 @@
 	}
 </style>
 </head>
-
 <body>
 <!-- TOP COVER -->
 <div class='title'>
@@ -272,18 +277,18 @@
 <img class='poster' src='elder-drake.png'>
 <!-- NAVBAR -->
 <div class='navbar'>
-	<div class='navbar-element'>
-		<a href='create.php' title='Instantiate all relations'>Create</a>
-	</div>
-	<div class='navbar-element'>
-		<a href='drop.php' title='Drop all tables in database'>Drop</a>
-	</div>
-	<div class='navbar-element'>
-		<a href='index.php' title='Return to index.php'>Home</a>
-	</div>
-	<div class='navbar-element'>
-		<a href='diagram.php' title='Display ER Diagram'>Diagram</a>
-	</div>
+	<a href='index.php' title='Return to index.php'>
+		<div class='navbar-element'>Home</div>
+	</a>
+	<a href='create.php' title='Instantiate all relations'>
+		<div class='navbar-element'>Create</div>
+	</a>
+	<a href='drop.php' title='Drop all tables in database'>
+		<div class='navbar-element'>Drop</div>
+	</a>
+	<a href='diagram.php' title='Display ER Diagram'>
+		<div class='navbar-element'>Diagram</div>
+	</a>
 </div>
 <!-- INTERACTIVE AREA -->
 <div class='webpage-body'>
@@ -294,7 +299,7 @@
 			<div class='query-text'>Select Which Query To Run</div>
 			<div class='dropdown-function'>
 				<button class='button'>Query Number</button>
-				<div id='dropdown-query' class='dropdown-content'>
+				<div class='dropdown-content'>
 					<a href='query.php?link=1'>Query 1</a>
 					<a href='query.php?link=2' name='query2'>Query 2</a>
 					<a href='query.php?link=3' name='query3'>Query 3</a>
@@ -308,6 +313,7 @@
 				</div>
 			</div>
 		</div>
+		<!-- NEW FEATURES ADDED SO NO LONGER NEEDED -->
 		<form action="query.php" method="post" class='hidden'>
 			Query number (8 is avg nested aggregate, 9 is min, 10 is division):&nbsp;<input name="query" type="text"><input value="Query" type="submit">
 		</form>
@@ -321,10 +327,10 @@
 			<div class='query-1'>Purchase With Account Name</div>
 			<input class='query-2' name="account" type="text" tabindex="1">
 			<div class='query-3'>Skin Theme</div>
-			<input class='query-4' name="theme" type="text">
+			<input class='query-4' name="theme" type="text" tabindex="2">
 			<div class='query-5'>Hero Name</div>
-			<input class='query-6' name="hero" type="text">
-			<input class='query-7 button' value="Purchase" type="submit">
+			<input class='query-6' name="hero" type="text" tabindex="3">
+			<input class='query-7 button' value="Purchase" type="submit" tabindex="4">
 		</form>
 	</div>
 	<img class='image float-left' src='project-katarina.png'>
@@ -334,10 +340,10 @@
 	<div class='float-left'>
 		<form class='query' action='query.php' method='post'>
 			<div class='query-1'>Add Points</div>
-			<input class='query-2' name="amount" type="text" tabindex="2">
+			<input class='query-2' name="amount" type="text" tabindex="5">
 			<div class='query-3'>Account Name</div>
-			<input class='query-4' name="gameName" type="text">
-			<input class='query-5 button' value="Add Points" type="submit">
+			<input class='query-4' name="gameName" type="text" tabindex="6">
+			<input class='query-5 button' value="Add Points" type="submit" tabindex="7">
 		</form>
 	</div>
 	<img class='image float-right' src='victorious-sivir.png'>
@@ -348,8 +354,8 @@
 	<div class='float-right'>
 		<form class='query' action='query.php' method='post'>
 			<div class='query-1'>Delete Which Account</div>
-			<input class='query-2' name="delete" type="text" tabindex="3">
-			<input class='query-3 button' value="Delete Account" type="submit">
+			<input class='query-2' name="delete" type="text" tabindex="8">
+			<input class='query-3 button' value="Delete Account" type="submit" tabindex="9">
 		</form>
 	</div>
 </div>

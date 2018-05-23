@@ -3,14 +3,14 @@
 <head>
 <title>Project - Home</title>
 <style>
-	/* Reset box model */
+	/* RESET BOX MODEL */
 	html {
 		box-sizing: border-box;
 	}
 	*, *:before, *:after {
 		box-sizing: inherit;
 	}
-	/* Body defaults */
+	/* DEFAULTS FOR BODY */
 	body {
 		font-family: Helvetica, Arial, sans-serif;
 		width: 100%;
@@ -22,7 +22,7 @@
 		background-color: #f1f1f1;
 		color: #333;
 	}
-	/* Table styling */
+	/* STYLING FOR ALL TABLES SHARED ACROSS ALL PAGES */
 	table {
 	    border-collapse: collapse;
 	    vertical-align: bottom;
@@ -44,7 +44,7 @@
 		color: #e0e0e0;
 		padding-right: 20px;
 	}
-	/* Top cover */
+	/* AREA ABOVE NAVIGATION BAR */
 	.poster {
 		display: block;
 		top: 0;
@@ -72,29 +72,32 @@
 		text-align: center;
 		line-height: 0;
 	}
-	/* Navigation bar */
+	/* NAVIGATION BAR */
 	.navbar {
 		background-color: #121212;
 		border-bottom: 2px solid #262626;
 		border-top: 4px solid #836323;
-		font-size: 18px;
-		font-weight: 700;
-		height: 52px;
+		font-size: 20px;
+		font-family: inherit;
+		height: 60px;
 		line-height: normal;
 		position: absolute;
 		margin-top: -0.6%;
 		text-align: left;
 		width: 100%;
-		font-size: 100%;
-		font: inherit;
 		z-index: 1000;
 		overflow: hidden;
 	}
 	.navbar-element {
 		display: inline-block;
 		float: left;
-		margin-top: 10px;
-		margin-left: 10%;
+		padding-top: 15px;
+		padding-left: 50px;
+		padding-right: 50px;
+		height: 100%;
+	}
+	.navbar-element:hover {
+		background-color: #333;
 	}
 	a {
 		color: #c9aa71;
@@ -106,36 +109,57 @@
 	a:active {
 		color: #fff;
 	}
-	/* Button */
+	/* STYLING SHARED ACROSS ALL BUTTONS */
 	.button {
 		color: #c8aa6e;
 		background-color: #121212;
 		border: none;
-		font-size: 18px;
+		font: inherit;
 		height: 50px;
 		width: 180px;
 	}
 	.button:hover {
 		color: #f1e6d0;
+		background-color: #333;
 		cursor: pointer;
 	}
 	.button:active {
 		color: #fff;
 	}
-	/* Hide debugging messages or redundant features */
+	/* HIDE DEBUGGING MESSAGES OR REDUNDANT FEATURES */
 	.hidden {
 		display: none;
 	}
 	/* ^^^ SHARED AMONG ALL WEBPAGES ^^^ */
-	/* Entire body of webpage */
+	/* AREA UNDER NAVBAR */
 	.webpage-body {
+		position: absolute;
 		display: block;
 		width: 100%;
 		padding-top: 70px;
 	}
+	/* VARIABLE CONTENT DISPLAYED BY PHP AND MYSQL */
+	.create {
+		margin-left: 50px;
+		margin-top: -10px;
+	}
+	.select {
+		margin-left: 50px;
+	}
+	.error {
+		margin-left: 50px;
+	}
+	table {
+		margin-left: 50px;
+	}
+	.purchase-text-1 {
+		margin-left: 50px;
+	}
+	.purchase-text-2 {
+		margin-left: 50px;
+	}
 </style>
 </head>
-
 <body>
 <!-- TOP COVER -->
 <div class='title'>
@@ -145,31 +169,33 @@
 <img class='poster' src="elder-drake.png">
 <!-- NAVBAR -->
 <div class='navbar'>
-	<div class='navbar-element'>
-		<a href='create.php' title='Instantiate all relations'>Create</a>
-	</div>
-	<div class='navbar-element'>
-		<a href='drop.php' title='Drop all tables in database'>Drop</a>
-	</div>
-	<div class='navbar-element'>
-		<a href='index.php' title='Return to index.php'>Home</a>
-	</div>
-	<div class='navbar-element'>
-		<a href='diagram.php' title='Dispaly ER Diagram'>Diagram</a>
-	</div>
+	<a href='index.php' title='Return to index.php'>
+		<div class='navbar-element'>Home</div>
+	</a>
+	<a href='create.php' title='Instantiate all relations'>
+		<div class='navbar-element'>Create</div>
+	</a>
+	<a href='drop.php' title='Drop all tables in database'>
+		<div class='navbar-element'>Drop</div>
+	</a>
+	<a href='diagram.php' title='Display ER Diagram'>
+		<div class='navbar-element'>Diagram</div>
+	</a>
 </div>
 <!-- WEBPAGE BODY -->
 <div class='webpage-body'>
-	<a href="index.php"><button>Return to index.php</button></a><br>
+	<a href="index.php" class='hidden'><button>Return to index.php</button></a><br>
 <?php
 	################################################################################
 	# Delete on cascade account                                                    #
 	################################################################################
-
+	
 	if (!empty($_REQUEST["delete"])) {
 		$delete = $_REQUEST["delete"];
 		$_REQUEST["query"] = 2;
+		/* NEW FEATURES ADDED SO NO LONGER NEEDED
 		echo "Account will be deleted: ", $delete, "<br>\n";
+		*/
 	} else {
 		$delete = "Puffy Snowflakes";
 	}
@@ -197,13 +223,14 @@
 
 		// run update
 		$update = "
-			UPDATE Accounts
-			SET balanceRiot = balanceRiot + $amount
-			WHERE gameName = '$gameName';
+UPDATE Accounts
+SET balanceRiot = balanceRiot + $amount
+WHERE gameName = '$gameName';
 		";
+		echo "<pre class='select'>$update</pre>";
 		$result = $conn->query($update);
 		if (!$result) {
-			echo "Error: $conn->error<br>\n";
+			echo "<div class='error'>Error: $conn->error</div>\n";
 		}
 
 		// run select query
@@ -212,7 +239,7 @@
 		";
 		$result = $conn->query($select);
 		if (!$result) {
-			echo "Error: $conn->error<br>\n";
+			echo "<div class='error'>Error: $conn->error</div>\n";
 		}
 
 		// print table of accounts
@@ -233,7 +260,7 @@
 			}
 			echo "</table><br><br>\n";
 		} else {
-			echo "Select Query failed<br>\n";
+			echo "<div class='error'>Select Query failed</div>\n";
 		}
 	}
 
@@ -245,7 +272,9 @@
 		$account = $_REQUEST["account"];
 		$hero = $_REQUEST["hero"];
 		$theme = $_REQUEST["theme"];
+		/* NEW FEATURES ADDED SO NO LONGER NEEDED
 		echo "Account name: (", $account, ") wants to buy (", $theme, " ", $hero, ") skin<br>\n";
+		*/
 
 		// Database information
 		$servername = "localhost";
@@ -270,7 +299,7 @@
 		";
 		$result = $conn->query($select);
 		if (!$result) {
-			echo "Error: $conn->error<br>\n";
+			echo "<div class='error'>Error: $conn->error</div>\n";
 		}
 		echo "<table>\n\t
 			<tr>
@@ -298,7 +327,7 @@
 			AND theme = '$theme';
 		"));
 		if (!$amount) {
-			echo "Error: $conn->error<br>\n";
+			echo "<div class='error'>Error: $conn->error</div>\n";
 		}
 
 		// find product ID
@@ -311,7 +340,7 @@
 			AND theme = '$theme';
 		"));
 		if (!$amount) {
-			echo "Error: $conn->error<br>\n";
+			echo "<div class='error'>Error: $conn->error</div>\n";
 		}
 
 		// find account balance
@@ -321,10 +350,10 @@
 			WHERE gameName = '$account';
 		"));
 		if (!$balance) {
-			echo "Error: $conn->error<br>\n";
+			echo "<div class='error'>Error: $conn->error</div>\n";
 		}
-		echo "Your account balance is: ", $balance["balanceRiot"], "<br>\n";
-		echo "The skin cost is : ", $amount["price"], "<br><br>\n";
+		echo "<div class='purchase-text-1'>Your account balance is: ", $balance["balanceRiot"], "<br>\n";
+		echo "The skin cost is : ", $amount["price"], "</div>\n";
 
 		// if have points to purchase skin then
 		if ($balance["balanceRiot"] >= $amount["price"]) {
@@ -335,7 +364,7 @@
 				WHERE gameName = '$account';
 			");
 			if (!$result) {
-				echo "Error: $conn->error<br>\n";
+				echo "<div class='error'>Error: $conn->error</div>\n";
 			}
 
 			// add skin to account
@@ -344,9 +373,11 @@
 				VALUES ('$account', {$productID["productID"]}, TIMESTAMP '2018-05-30 18:00:00');
 			");
 			if (!$result) {
-				echo "Error: $conn->error<br>\n";
+				echo "<div class='error'>Error: $conn->error</div>\n";
 			} else {
+				/* NEW FEATURES ADDED SO NO LONGER NEEDED
 				echo "Purchase was successful! <br>\n";
+				*/
 				// find account balance again
 				$balance = mysqli_fetch_assoc($conn->query("
 					SELECT balanceRiot
@@ -354,12 +385,12 @@
 					WHERE gameName = '$account';
 				"));
 				if (!$balance) {
-					echo "Error: $conn->error<br>\n";
+					echo "<div class='error'>Error: $conn->error</div>\n";
 				}
-				echo "Your new account balance is: ", $balance["balanceRiot"], "<br>\n";
+				echo "<div class='purchase-text-2'>Your new account balance is: ", $balance["balanceRiot"], "</div>\n";
 			}
 		} else {
-			echo "Not enough points to buy skin!<br>\n";
+			echo "<div class='purchase-text-2'>Not enough points to buy skin!</div>\n";
 		}
 
 		// display Owns table again
@@ -372,8 +403,9 @@
 		";
 		$result = $conn->query($select);
 		if (!$result) {
-			echo "Error: $conn->error<br>\n";
+			echo "<div class='error'>Error: $conn->error</div>\n";
 		}
+		echo "<br>";
 		echo "<table>\n\t
 			<tr>
 				<th>Game Name</th>   <th>Hero Name</th>
@@ -399,50 +431,57 @@
 	} elseif (!empty($_REQUEST["query"])) {
 		$num = $_REQUEST["query"];
 	} else {
+		/* NEW FEATURES ADDED SO NO LONGER NEEDED
 		echo "No query selected";
+		*/
 	}
 
+	/* QUICK FIX FOR NEW FEATURES ADDED */
+	if (!isset($num)) {
+		$num = 0;
+	}
 	if ($num) {
-		echo "**************************************************<br>\n";
-		echo "Your query number was: ", $num, "<br>\n";
-
+		/* NEW FEATURES ADDED SO NO LONGER NEEDED
+			echo "**************************************************<br>\n";
+			echo "Your query number was: ", $num, "<br>\n";
+		*/
 		##################################################
 
 		if ($num == 1) {
 			$create = "
-				CREATE VIEW HighRank AS
-				    /* return players and their region */
-				    SELECT gameName, seasonRank, region, city
-				    FROM Servers, Accounts
-				    WHERE Servers.id = Accounts.serverId
-				    /* if player has a high rank */
-				    AND seasonRank > 20;
+CREATE VIEW HighRank AS
+    /* return players and their region */
+    SELECT gameName, seasonRank, region, city
+    FROM Servers, Accounts
+    WHERE Servers.id = Accounts.serverId
+    /* if player has a high rank */
+    AND seasonRank > 20;
 
-				CREATE VIEW BestRegion AS
-				    /* return region and number of high ranked players in each region */
-				    SELECT region, count(region) AS goodPlayers
-				    FROM HighRank
-				    GROUP BY region;
-			";
+CREATE VIEW BestRegion AS
+    /* return region and number of high ranked players in each region */
+    SELECT region, count(region) AS goodPlayers
+    FROM HighRank
+    GROUP BY region;
+";
 			$select = "
-				SELECT * FROM BestRegion;
-			";
+SELECT * FROM BestRegion;
+";
 			$drop = "
-				DROP VIEW BestRegion;
-				DROP VIEW HighRank;
-			";
+DROP VIEW BestRegion;
+DROP VIEW HighRank;
+";
 		}
 
 		##################################################
 
 		elseif ($num == 2) {
 			$create = "
-				DELETE FROM Accounts
-				WHERE gameName = '$delete';
-			";
+DELETE FROM Accounts
+WHERE gameName = '$delete';
+";
 			$select = "
-				SELECT * FROM Accounts;
-			";
+SELECT * FROM Accounts;
+";
 			$drop = "";
 		}
 
@@ -450,19 +489,19 @@
 
 		elseif ($num == 3) {
 			$create = "
-				UPDATE Accounts
-				/* decrease all players' ranks by 20% and subtract 4
-				 * so all players' ranks will go down by a lot since max rank is 27 */
-				SET seasonRank = FLOOR(seasonRank * 0.80 - 4);
+UPDATE Accounts
+/* decrease all players' ranks by 20% and subtract 4
+ * so all players' ranks will go down by a lot since max rank is 27 */
+SET seasonRank = FLOOR(seasonRank * 0.80 - 4);
 
-				UPDATE Accounts
-				/* if player rank is negative then set it to one */
-				SET seasonRank = 1
-				WHERE seasonRank <= 0;
-			";
+UPDATE Accounts
+/* if player rank is negative then set it to one */
+SET seasonRank = 1
+WHERE seasonRank <= 0;
+";
 			$select = "
-				SELECT gameName, seasonRank FROM Accounts;
-			";
+SELECT gameName, seasonRank FROM Accounts;
+";
 			$drop = "";
 		}
 
@@ -470,236 +509,236 @@
 
 		elseif ($num == 4) {
 			$create = "
-				CREATE VIEW numberSkins AS
-				    /* return the name of hero, number of skins that hero has */
-				    SELECT name AS HeroName, count(name) AS NumberOfSkins
-				    FROM heroes
-				    JOIN skins
-				    ON heroes.name = skins.heroname
-				    /* group by each hero */
-				    GROUP BY name
-				    ORDER BY name;
-			";
+CREATE VIEW numberSkins AS
+    /* return the name of hero, number of skins that hero has */
+    SELECT name AS HeroName, count(name) AS NumberOfSkins
+    FROM heroes
+    JOIN skins
+    ON heroes.name = skins.heroname
+    /* group by each hero */
+    GROUP BY name
+    ORDER BY name;
+";
 			$select = "
-				SELECT * FROM NumberSkins;
-			";
+SELECT * FROM NumberSkins;
+";
 			$drop = "
-				DROP VIEW NumberSkins;
-			";
+DROP VIEW NumberSkins;
+";
 		}
 
 		##################################################
 
 		elseif ($num == 5) {
 			$create = "
-				CREATE VIEW MaxPrice AS
-				    /* return the price of the most expensive skin */
-				    SELECT heroName, max(price) AS maxPrice
-				    /* get table of hero skin information */
-				    FROM products
-				    JOIN skins
-				    ON products.Id = skins.productId
-				    /* group into categories of each hero */
-				    GROUP BY heroName;
+CREATE VIEW MaxPrice AS
+    /* return the price of the most expensive skin */
+    SELECT heroName, max(price) AS maxPrice
+    /* get table of hero skin information */
+    FROM products
+    JOIN skins
+    ON products.Id = skins.productId
+    /* group into categories of each hero */
+    GROUP BY heroName;
 
-				CREATE VIEW ProductsSkins AS
-				    /* to store results of join on products and skins tables */
-				    SELECT *
-				    FROM products, skins
-				    WHERE products.Id = skins.productId;
+CREATE VIEW ProductsSkins AS
+    /* to store results of join on products and skins tables */
+    SELECT *
+    FROM products, skins
+    WHERE products.Id = skins.productId;
 
-				CREATE VIEW MaxPriceSkin AS
-				    /* return each skin found and the details about each skin */
-				    SELECT ProductsSkins.heroName, theme, rarity, price
-				    /* get table of hero skin info and most expensive skin info */
-				    FROM ProductsSkins, MaxPrice
-				    /* for each hero */
-				    WHERE MaxPrice.heroName = ProductsSkins.heroName
-				    /* find the skins whose price equals the price of the most expensive skin that each hero owns */
-				    AND MaxPrice.maxPrice = ProductsSkins.price;
-			";
+CREATE VIEW MaxPriceSkin AS
+    /* return each skin found and the details about each skin */
+    SELECT ProductsSkins.heroName, theme, rarity, price
+    /* get table of hero skin info and most expensive skin info */
+    FROM ProductsSkins, MaxPrice
+    /* for each hero */
+    WHERE MaxPrice.heroName = ProductsSkins.heroName
+    /* find the skins whose price equals the price of the most expensive skin that each hero owns */
+    AND MaxPrice.maxPrice = ProductsSkins.price;
+";
 			$select = "
-				SELECT * FROM MaxPriceSkin;
-			";
+SELECT * FROM MaxPriceSkin;
+";
 			$drop = "
-				DROP VIEW MaxPrice;
-				DROP VIEW ProductsSkins;
-				DROP VIEW MaxPriceSkin;
-			";
+DROP VIEW MaxPrice;
+DROP VIEW ProductsSkins;
+DROP VIEW MaxPriceSkin;
+";
 		}
 
 		##################################################
 
 		elseif ($num == 6) {
 			$create = "
-				CREATE VIEW ProductsOwns AS
-				    SELECT *
-				    /* get table of products that each account owns */
-				    FROM products
-				    JOIN owns
-				    ON products.id = owns.productId;
+CREATE VIEW ProductsOwns AS
+    SELECT *
+    /* get table of products that each account owns */
+    FROM products
+    JOIN owns
+    ON products.id = owns.productId;
 
-				CREATE VIEW SpendHistory AS
-				    /* get the account name, total spend amount, number of purchases */
-				    SELECT gameName, sum(price) AS totalSpending, count(price) AS numPurchases
-				    FROM ProductsOwns
-				    /* for game items that must be bought with real money */
-				    WHERE price > 0
-				    GROUP BY gameName;
-			";
+CREATE VIEW SpendHistory AS
+    /* get the account name, total spend amount, number of purchases */
+    SELECT gameName, sum(price) AS totalSpending, count(price) AS numPurchases
+    FROM ProductsOwns
+    /* for game items that must be bought with real money */
+    WHERE price > 0
+    GROUP BY gameName;
+";
 			$select = "
-				SELECT * FROM SpendHistory;
-			";
+SELECT * FROM SpendHistory;
+";
 			$drop = "
-				DROP VIEW ProductsOwns;
-				DROP VIEW SpendHistory;
-			";
+DROP VIEW ProductsOwns;
+DROP VIEW SpendHistory;
+";
 		}
 
 		##################################################
 
 		elseif ($num == 7) {
 			$create = "
-				CREATE VIEW NotOwn AS
-				    SELECT DISTINCT player.gameName, Heroes.name AS heroName
-				    FROM Heroes, Owns player
-				    /* get heroes player does not own*/
-				    WHERE Heroes.name NOT IN (
-				        /* get the heroes player owns */
-				        SELECT Heroes.name
-				        FROM Owns
-				        JOIN Heroes
-				        ON Heroes.productId = Owns.productId
-				        /* for each player */
-				        WHERE player.gameName = Owns.gameName
-				    );
+CREATE VIEW NotOwn AS
+    SELECT DISTINCT player.gameName, Heroes.name AS heroName
+    FROM Heroes, Owns player
+    /* get heroes player does not own*/
+    WHERE Heroes.name NOT IN (
+        /* get the heroes player owns */
+        SELECT Heroes.name
+        FROM Owns
+        JOIN Heroes
+        ON Heroes.productId = Owns.productId
+        /* for each player */
+        WHERE player.gameName = Owns.gameName
+    );
 
-				CREATE VIEW OwnsAll AS
-				    /* return the name of the player */
-				    SELECT DISTINCT player.gameName
-				    FROM Owns player
-				    /* if the list of heroes is empty */
-				    WHERE NOT EXISTS (
-				        /* get all the heroes a player does not own */
-				        SELECT heroName
-				        FROM NotOwn
-				        /* for each player */
-				        WHERE player.gameName = NotOwn.gameName
-				    );
-			";
+CREATE VIEW OwnsAll AS
+    /* return the name of the player */
+    SELECT DISTINCT player.gameName
+    FROM Owns player
+    /* if the list of heroes is empty */
+    WHERE NOT EXISTS (
+        /* get all the heroes a player does not own */
+        SELECT heroName
+        FROM NotOwn
+        /* for each player */
+        WHERE player.gameName = NotOwn.gameName
+    );
+";
 			$select = "
-				SELECT * FROM OwnsAll;
-			";
+SELECT * FROM OwnsAll;
+";
 			$drop = "
-				DROP VIEW NotOwn;
-				DROP VIEW OwnsAll;
-			";
+DROP VIEW NotOwn;
+DROP VIEW OwnsAll;
+";
 		}
 
 		##################################################
 
 		elseif ($num == 8) {
 			$create = "
-				CREATE VIEW ProductsOwns AS
-				    SELECT *
-				    /* get table of products that each account owns */
-				    FROM products
-				    JOIN owns
-				    ON products.id = owns.productId;
+CREATE VIEW ProductsOwns AS
+    SELECT *
+    /* get table of products that each account owns */
+    FROM products
+    JOIN owns
+    ON products.id = owns.productId;
 
-				CREATE VIEW AveragePurchase AS
-				    SELECT gameName, AVG(price) AS averagePrice
-				    FROM ProductsOwns
-				    /* get players whose average price of all things they bought
-				     * is higher than the game's average */
-				    GROUP BY gameName
-				    HAVING AVG(price) >(
-				        /* return average price of all products in the entire game */
-				        SELECT AVG(price) 
-				        FROM ProductsOwns
-				    );
-			";
+CREATE VIEW AveragePurchase AS
+    SELECT gameName, AVG(price) AS averagePrice
+    FROM ProductsOwns
+    /* get players whose average price of all things they bought
+     * is higher than the game's average */
+    GROUP BY gameName
+    HAVING AVG(price) >(
+        /* return average price of all products in the entire game */
+        SELECT AVG(price) 
+        FROM ProductsOwns
+    );
+";
 			$select = "
-				SELECT * FROM AveragePurchase;
-			";
+SELECT * FROM AveragePurchase;
+";
 			$drop = "
 				DROP VIEW ProductsOwns;
 				DROP VIEW AveragePurchase;
-			";
+";
 		}
 
 		##################################################
 
 		elseif ($num == 9) {
 			$create = "
-				CREATE VIEW ProductsOwns AS
-					SELECT *
-					/* get table of products that each account owns */
-					FROM products
-					JOIN owns
-					ON products.Id = owns.productId;
+CREATE VIEW ProductsOwns AS
+	SELECT *
+	/* get table of products that each account owns */
+	FROM products
+	JOIN owns
+	ON products.Id = owns.productId;
 
-				CREATE VIEW PriceFilter AS
-					/* return the average price of items bought for each player */
-					SELECT gameName, MIN(price) AS minPrice
-					FROM ProductsOwns
-					/* get players who have bought more than 7 products */
-					GROUP BY gameName
-					HAVING 7 < count(price);
-			";
+CREATE VIEW PriceFilter AS
+	/* return the average price of items bought for each player */
+	SELECT gameName, MIN(price) AS minPrice
+	FROM ProductsOwns
+	/* get players who have bought more than 7 products */
+	GROUP BY gameName
+	HAVING 7 < count(price);
+";
 			$select = "
-				SELECT * FROM PriceFilter;
-			";
+SELECT * FROM PriceFilter;
+";
 			$drop = "
-				DROP VIEW ProductsOwns;
-				DROP VIEW PriceFilter;
-			";
+DROP VIEW ProductsOwns;
+DROP VIEW PriceFilter;
+";
 		}
 
 		##################################################
 		elseif ($num == 10) {
 			$create = "
-				CREATE VIEW OwnsSkins AS
-				    /* return useful results of join between Owns and Skins */
-				    SELECT gameName, heroName, theme, rarity
-				    FROM Owns
-				    JOIN Skins
-				    ON Owns.productId = Skins.productId
-				    ORDER BY gameName;
+CREATE VIEW OwnsSkins AS
+    /* return useful results of join between Owns and Skins */
+    SELECT gameName, heroName, theme, rarity
+    FROM Owns
+    JOIN Skins
+    ON Owns.productId = Skins.productId
+    ORDER BY gameName;
 
-				CREATE VIEW ManySkins AS
-				    /* return players who own lots of skins */
-				    SELECT gameName, count(gameName) AS numSkins
-				    FROM OwnsSkins
-				    GROUP BY gameName
-				    HAVING count(gameName) >= 4;
+CREATE VIEW ManySkins AS
+    /* return players who own lots of skins */
+    SELECT gameName, count(gameName) AS numSkins
+    FROM OwnsSkins
+    GROUP BY gameName
+    HAVING count(gameName) >= 4;
 
-				CREATE VIEW SkinsNotOwned AS
-				    SELECT gameName, heroName, theme, rarity
-				    FROM Accounts, Skins
-				    /* find skins not owned by that player */
-				    WHERE Skins.theme NOT IN (
-				        SELECT theme
-				        FROM OwnsSkins 
-				        /* for each gameName */
-				        WHERE Accounts.gameName = OwnsSkins.gameName
-				        /* for each hero */
-				        AND Skins.heroName = OwnsSkins.heroName    
-				    ) /* players who have many skins */
-				    AND Accounts.gameName IN (
-				        SELECT gameName
-				        FROM ManySkins
-				    )
-				    ORDER BY gameName, heroName;
-			";
+CREATE VIEW SkinsNotOwned AS
+    SELECT gameName, heroName, theme, rarity
+    FROM Accounts, Skins
+    /* find skins not owned by that player */
+    WHERE Skins.theme NOT IN (
+        SELECT theme
+        FROM OwnsSkins 
+        /* for each gameName */
+        WHERE Accounts.gameName = OwnsSkins.gameName
+        /* for each hero */
+        AND Skins.heroName = OwnsSkins.heroName    
+    ) /* players who have many skins */
+    AND Accounts.gameName IN (
+        SELECT gameName
+        FROM ManySkins
+    )
+    ORDER BY gameName, heroName;
+";
 			$select = "
-				SELECT * FROM SkinsNotOwned;
-			";
+SELECT * FROM SkinsNotOwned;
+";
 			$drop = "
-				DROP VIEW OwnsSkins;
-				DROP VIEW ManySkins;
-				DROP VIEW SkinsNotOwned;
-			";
+DROP VIEW OwnsSkins;
+DROP VIEW ManySkins;
+DROP VIEW SkinsNotOwned;
+";
 		}
 
 		################################################################################
@@ -719,12 +758,17 @@
 		    exit("Connection failed: " . $conn->connect_error);
 		}
 
-		// Print all queries to run
-		echo "**************************************************<br>\n";
-		echo "Create query was: $create<br>\n";
-		echo "Select query was: $select<br>\n";
-		echo "Drop query was: $drop<br>\n";
-		echo "**************************************************<br><br>\n";
+		/* NEW FEATURES ADDED SO NO LONGER NEEDED
+			// Print all queries to run
+			echo "**************************************************<br>\n";
+			echo "Create query was: $create<br>\n";
+			echo "Select query was: $select<br>\n";
+			echo "Drop query was: $drop<br>\n";
+			echo "**************************************************<br><br>\n";
+		*/
+
+		echo "<pre class='create'>" . $create . "</pre>";
+		echo "<pre class='select'>" . $select . "</pre>";
 
 		################################################################################
 		# Create query                                                                 #
@@ -732,12 +776,15 @@
 
 		// Create views
 		if ($conn->multi_query($create)) {
+			/* NEW FEATURES ADDED SO NO LONGER NEEDED
 			echo "Create executed successfully<br><br>\n";
+			*/
 		} else {
 			echo "Error during creation: " . $conn->error . "<br><br>\n";
 		}
+		/* NEW FEATURES ADDED SO NO LONGER NEEDED
 		echo "**************************************************<br><br>\n";
-
+		*/
 
 		// flush multi_queries so that can use single query function
 		while ($conn->next_result()) {;}
@@ -924,7 +971,9 @@
 			echo "No results returned<br><br>\n";
 		}
 
+		/* NEW FEATURES ADDED SO NO LONGER NEEDED
 		echo "**************************************************<br><br>\n";
+		*/
 
 		################################################################################
 		# Drop query                                                                   #
@@ -937,9 +986,11 @@
 		if (empty($drop)) {
 			echo "Drop query was empty";
 		} elseif ($conn->multi_query($drop)) {
+			/* NEW FEATURES ADDED SO NO LONGER NEEDED
 			echo "Drop executed successfully<br>\n";
+			*/
 		} else {
-			echo "Error during drop views<br>\n";
+	    	echo "<div class='error'>Error: " . $conn->error . "</div>";
 		}
 
 		// Close connection

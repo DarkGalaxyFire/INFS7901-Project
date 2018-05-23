@@ -3,14 +3,14 @@
 <head>
 <title>Project - Home</title>
 <style>
-	/* Reset box model */
+	/* RESET BOX MODEL */
 	html {
 		box-sizing: border-box;
 	}
 	*, *:before, *:after {
 		box-sizing: inherit;
 	}
-	/* Body defaults */
+	/* DEFAULTS FOR BODY */
 	body {
 		font-family: Helvetica, Arial, sans-serif;
 		width: 100%;
@@ -22,7 +22,7 @@
 		background-color: #f1f1f1;
 		color: #333;
 	}
-	/* Table styling */
+	/* STYLING FOR ALL TABLES SHARED ACROSS ALL PAGES */
 	table {
 	    border-collapse: collapse;
 	    vertical-align: bottom;
@@ -44,7 +44,7 @@
 		color: #e0e0e0;
 		padding-right: 20px;
 	}
-	/* Top cover */
+	/* AREA ABOVE NAVIGATION BAR */
 	.poster {
 		display: block;
 		top: 0;
@@ -72,29 +72,32 @@
 		text-align: center;
 		line-height: 0;
 	}
-	/* Navigation bar */
+	/* NAVIGATION BAR */
 	.navbar {
 		background-color: #121212;
 		border-bottom: 2px solid #262626;
 		border-top: 4px solid #836323;
-		font-size: 18px;
-		font-weight: 700;
-		height: 52px;
+		font-size: 20px;
+		font-family: inherit;
+		height: 60px;
 		line-height: normal;
 		position: absolute;
 		margin-top: -0.6%;
 		text-align: left;
 		width: 100%;
-		font-size: 100%;
-		font: inherit;
 		z-index: 1000;
 		overflow: hidden;
 	}
 	.navbar-element {
 		display: inline-block;
 		float: left;
-		margin-top: 10px;
-		margin-left: 10%;
+		padding-top: 15px;
+		padding-left: 50px;
+		padding-right: 50px;
+		height: 100%;
+	}
+	.navbar-element:hover {
+		background-color: #333;
 	}
 	a {
 		color: #c9aa71;
@@ -106,33 +109,36 @@
 	a:active {
 		color: #fff;
 	}
-	/* Button */
+	/* STYLING SHARED ACROSS ALL BUTTONS */
 	.button {
 		color: #c8aa6e;
 		background-color: #121212;
 		border: none;
-		font-size: 18px;
+		font: inherit;
 		height: 50px;
 		width: 180px;
 	}
 	.button:hover {
 		color: #f1e6d0;
+		background-color: #333;
 		cursor: pointer;
 	}
 	.button:active {
 		color: #fff;
 	}
-	/* Hide debugging messages or redundant features */
+	/* HIDE DEBUGGING MESSAGES OR REDUNDANT FEATURES */
 	.hidden {
 		display: none;
 	}
 	/* ^^^ SHARED AMONG ALL WEBPAGES ^^^ */
-	/* Entire body of webpage */
+	/* AREA UNDER NAVBAR */
 	.webpage-body {
-		position: relative;
+		position: absolute;
 		display: block;
 		width: 100%;
+		padding-top: 70px;
 	}
+	/* ER DIAGRAM */
 	.image {
 		display: block;
 		position: absolute;
@@ -143,7 +149,6 @@
 	}
 </style>
 </head>
-
 <body>
 <!-- TOP COVER -->
 <div class='title'>
@@ -153,20 +158,19 @@
 <img class='poster' src="elder-drake.png">
 <!-- NAVBAR -->
 <div class='navbar'>
-	<div class='navbar-element'>
-		<a href='create.php' title='Instantiate all relations'>Create</a>
-	</div>
-	<div class='navbar-element'>
-		<a href='drop.php' title='Drop all tables in database'>Drop</a>
-	</div>
-	<div class='navbar-element'>
-		<a href='index.php' title='Return to index.php'>Home</a>
-	</div>
-	<div class='navbar-element'>
-		<a href='diagram.php' title='Dispaly ER Diagram'>Diagram</a>
-	</div>
+	<a href='index.php' title='Return to index.php'>
+		<div class='navbar-element'>Home</div>
+	</a>
+	<a href='create.php' title='Instantiate all relations'>
+		<div class='navbar-element'>Create</div>
+	</a>
+	<a href='drop.php' title='Drop all tables in database'>
+		<div class='navbar-element'>Drop</div>
+	</a>
+	<a href='diagram.php' title='Display ER Diagram'>
+		<div class='navbar-element'>Diagram</div>
+	</a>
 </div>
-
 <!-- ER Diagram -->
 <div class='webpage-body'>
 	<img class='image' src='diagram.png'>
