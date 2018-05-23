@@ -30,9 +30,9 @@
 	th {
 		background-color: #0d9072;
 		color: #fff;
-	}
-	tr {
-		color: ;
+		padding-right: 20px;
+		text-align: left;
+		white-space: nowrap;
 	}
 	tr:nth-child(even) {
 		background-color: #1f2325;
@@ -42,6 +42,7 @@
 	}
 	td {
 		color: #e0e0e0;
+		padding-right: 20px;
 	}
 	/* Top cover */
 	.poster {
@@ -105,6 +106,27 @@
 	a:active {
 		color: #fff;
 	}
+	/* Button */
+	.button {
+		color: #c8aa6e;
+		background-color: #121212;
+		border: none;
+		font-size: 18px;
+		height: 50px;
+		width: 180px;
+	}
+	.button:hover {
+		color: #f1e6d0;
+		cursor: pointer;
+	}
+	.button:active {
+		color: #fff;
+	}
+	/* Hide debugging messages or redundant features */
+	.hidden {
+		display: none;
+	}
+	/* ^^^ SHARED AMONG ALL WEBPAGES ^^^ */
 	/* Entire body of webpage */
 	.webpage-body {
 		display: block;
@@ -132,27 +154,29 @@
 		display: table;
 	}
 	.float-left {
+		position: relative;
 		width: 50%;
 		float: left;
 	}
 	.float-right {
+		position: relative;
 		width: 50%;
 		float: right;
 	}
 	/* First query part */
 	.query-text {
 		position: absolute;
+		top: 50px;
 		padding: 15px;
 		font-weight: 700;
 	}
 	.query-select {
-		top: 20%;
 		left: 30px;
 		width: 270px;
 	}
 	.dropdown-function {
 		position: absolute;
-		top: 20%;
+		top: 55px;
 		left: 290px;
 		width: 180px;
 	}
@@ -190,16 +214,49 @@
 	.dropdown-content a:hover {
 	    color: #f1e6d0;
 	}
-	.dropdown-content a:focus {
+	.dropdown-content a:active {
 		color: #fff;
 	}
-	.hidden {
-		display: none;
+	/* Second, Third, and Fourth query part */
+	input {
+		font-size: 18px;
+		color: #9b9b9b;
 	}
-	/* Second query part */
-
-
-
+	.query {
+		position: absolute;
+		left: 20px;
+		top: 20px;
+		font-weight: 700;
+		width: 400px;
+	}
+	.query-1 {
+		position: absolute;
+		top: 0;
+	}
+	.query-2 {
+		position: absolute;
+		top: 30px;
+	}
+	.query-3 {
+		position: absolute;
+		top: 70px;
+	}
+	.query-4 {
+		position: absolute;
+		top: 100px;
+	}
+	.query-5 {
+		position: absolute;
+		top: 140px;
+	}
+	.query-6 {
+		position: absolute;
+		top: 170px;
+	}
+	.query-7 {
+		position: absolute;
+		top: 210px;
+	}
 	/* Tables */
 	.tables-region {
 		width: 100%;
@@ -241,7 +298,7 @@
 <!-- ROW 1 -->
 <div class='row clearfix'>
 	<div class='float-left'>
-		<div class='query-text query-select'>Select Which Query to Run: </div>
+		<div class='query-text query-select'>Select Which Query To Run</div>
 		<div class='dropdown-function'>
 			<button class='dropdown-button'>Query Number</button>
 			<div id='dropdown-query' class='dropdown-content'>
@@ -266,14 +323,14 @@
 <!-- ROW 2 -->
 <div class='row clearfix row-top'>
 	<div class='float-right'>
-		<form action="query.php" method="post">
-			<div class='query-text'>Purchase with account name:</div><br>
-			<input name="account" type="text"><br>
-			<div class='query-text'>Skin theme:</div><br>
-			<input name="theme" type="text"><br>
-			<div class='query-text'>Hero name:</div><br>
-			<input name="hero" type="text"><br>
-			<input value="Purchase" type="submit"><br>
+		<form class='query' action="query.php" method="post">
+			<div class='query-1'>Purchase With Account Name</div>
+			<input class='query-2' name="account" type="text">
+			<div class='query-3'>Skin Theme</div>
+			<input class='query-4' name="theme" type="text">
+			<div class='query-5'>Hero Name</div>
+			<input class='query-6' name="hero" type="text">
+			<input class='query-7 button' value="Purchase" type="submit">
 		</form>
 	</div>
 	<img class='image float-left' src='project-katarina.png'>
@@ -281,21 +338,25 @@
 <!-- ROW 3 -->
 <div class='row clearfix row-top'>
 	<div class='float-left'>
-		<div class='query-text'>Add points:</div><br>
-		<input name="amount" type="text"><br>
-		<div class='query-text'>Account name:</div><br>
-		<input name="gameName" type="text"><br>
-		<input value="Add Points" type="submit"><br>
+		<form class='query' action='query.php' method='post'>
+			<div class='query-1'>Add Points</div>
+			<input class='query-2' name="amount" type="text">
+			<div class='query-3'>Account Name</div>
+			<input class='query-4' name="gameName" type="text">
+			<input class='query-5 button' value="Add Points" type="submit">
+		</form>
 	</div>
-	<img class='float-right' src='victorious-sivir.png'>
+	<img class='image float-right' src='victorious-sivir.png'>
 </div>
 <!-- ROW 4 -->
 <div class='row clearfix row-top'>
-	<img class='float-left' src='cyberpop-zoe.png'>
+	<img class='image float-left' src='cyberpop-zoe.png'>
 	<div class='float-right'>
-		<div class='query-text'>Delete which account:</div><br>
-		<input name="delete" type="text"><br>
-		<input value="Delete Account" type="submit"><br>
+		<form class='query' action='query.php' method='post'>
+			<div class='query-1'>Delete Which Account</div>
+			<input class='query-2' name="delete" type="text">
+			<input class='query-3 button' value="Delete Account" type="submit">
+		</div>
 	</div>
 </div>
 <!-- STATIC TABLES -->

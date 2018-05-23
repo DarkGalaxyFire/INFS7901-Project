@@ -3,14 +3,18 @@
 <head>
 <title>Project - Home</title>
 <style>
+	/* Reset box model */
 	html {
 		box-sizing: border-box;
 	}
 	*, *:before, *:after {
 		box-sizing: inherit;
 	}
+	/* Body defaults */
 	body {
 		font-family: Helvetica, Arial, sans-serif;
+		width: 100%;
+		height: 100%;
 		line-height: 1.42857143;
 		font-size: 18px;
 		margin: 0;
@@ -18,6 +22,7 @@
 		background-color: #f1f1f1;
 		color: #333;
 	}
+	/* Table styling */
 	table {
 	    border-collapse: collapse;
 	    vertical-align: bottom;
@@ -25,9 +30,9 @@
 	th {
 		background-color: #0d9072;
 		color: #fff;
-	}
-	tr {
-		color: ;
+		padding-right: 20px;
+		text-align: left;
+		white-space: nowrap;
 	}
 	tr:nth-child(even) {
 		background-color: #1f2325;
@@ -37,7 +42,9 @@
 	}
 	td {
 		color: #e0e0e0;
+		padding-right: 20px;
 	}
+	/* Top cover */
 	.poster {
 		display: block;
 		top: 0;
@@ -65,9 +72,11 @@
 		text-align: center;
 		line-height: 0;
 	}
+	/* Navigation bar */
 	.navbar {
 		background-color: #121212;
 		border-bottom: 2px solid #262626;
+		border-top: 4px solid #836323;
 		font-size: 18px;
 		font-weight: 700;
 		height: 52px;
@@ -97,6 +106,28 @@
 	a:active {
 		color: #fff;
 	}
+	/* Button */
+	.button {
+		color: #c8aa6e;
+		background-color: #121212;
+		border: none;
+		font-size: 18px;
+		height: 50px;
+		width: 180px;
+	}
+	.button:hover {
+		color: #f1e6d0;
+		cursor: pointer;
+	}
+	.button:active {
+		color: #fff;
+	}
+	/* Hide debugging messages or redundant features */
+	.hidden {
+		display: none;
+	}
+	/* ^^^ SHARED AMONG ALL WEBPAGES ^^^ */
+	/* Entire body of webpage */
 	.webpage-body {
 		display: block;
 		width: 100%;
