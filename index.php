@@ -111,7 +111,7 @@
 		color: #c8aa6e;
 		background-color: #121212;
 		border: none;
-		font-size: 18px;
+		font-size: 20px;
 		height: 50px;
 		width: 180px;
 	}
@@ -121,6 +121,10 @@
 	}
 	.button:active {
 		color: #fff;
+	}
+	/* Image */
+	.image {
+		margin-top: -0.7px;
 	}
 	/* Hide debugging messages or redundant features */
 	.hidden {
@@ -133,6 +137,11 @@
 		width: 100%;
 		padding-top: 70px;
 	}
+	.clearfix::before, .clearfix::after {
+		content: "";
+		clear: both;
+		display: table;
+	}
 	.row {
 		position: relative;
 		display: block;
@@ -143,15 +152,8 @@
 	}
 	.row-top {
 		border-top: 8px solid #c3a568;
-		/* Introduces some strange whitespace so this is left out
     	border-image: linear-gradient(to right,#836323 0,#c3a568 51%,#836323 100%);
 	    border-image-slice: 1;
-	    */
-	}
-	.clearfix::before, .clearfix::after {
-		content: "";
-		clear: both;
-		display: table;
 	}
 	.float-left {
 		position: relative;
@@ -164,44 +166,33 @@
 		float: right;
 	}
 	/* First query part */
+	.query-select {
+		position: absolute;
+		top: 65px;
+		left: 30px;
+		width: 80%;
+	}
 	.query-text {
 		position: absolute;
-		top: 50px;
-		padding: 15px;
 		font-weight: 700;
-	}
-	.query-select {
-		left: 30px;
-		width: 270px;
+		font-size: 20px;
 	}
 	.dropdown-function {
 		position: absolute;
-		top: 55px;
-		left: 290px;
+		top: -10px;
+		left: 275px;
 		width: 180px;
 	}
 	.dropdown-function:hover > .dropdown-content {
 		display: block;
 	}
-	.dropdown-button {
-		color: #c8aa6e;
-		background-color: #121212;
-		border: none;
-		width: 180px;
-		padding: 15px;
-		font-size: 18px;
-		cursor: pointer;
-	}
-	.dropdown-button:hover {
-		color: #f1e6d0;
-	}
 	.dropdown-content {
 		background-color: #121212;
 		display: none;
 		position: absolute;
-		padding-left: 15px;
+		padding-left: 10px;
 		min-width: 180px;
-		font-size: 18px;
+		font-size: 20px;
 		border-top: 2px solid #262626;
 		z-index: 10;
 	}
@@ -219,8 +210,8 @@
 	}
 	/* Second, Third, and Fourth query part */
 	input {
-		font-size: 18px;
 		color: #9b9b9b;
+		font-size: 20px;
 	}
 	.query {
 		position: absolute;
@@ -228,6 +219,7 @@
 		top: 20px;
 		font-weight: 700;
 		width: 400px;
+		font-size: 20px;
 	}
 	.query-1 {
 		position: absolute;
@@ -298,20 +290,22 @@
 <!-- ROW 1 -->
 <div class='row clearfix'>
 	<div class='float-left'>
-		<div class='query-text query-select'>Select Which Query To Run</div>
-		<div class='dropdown-function'>
-			<button class='dropdown-button'>Query Number</button>
-			<div id='dropdown-query' class='dropdown-content'>
-				<a href='query.php?link=1'>Query 1</a>
-				<a href='query.php?link=2' name='query2'>Query 2</a>
-				<a href='query.php?link=3' name='query3'>Query 3</a>
-				<a href='query.php?link=4' name='query4'>Query 4</a>
-				<a href='query.php?link=5' name='query5'>Query 5</a>
-				<a href='query.php?link=6' name='query6'>Query 6</a>
-				<a href='query.php?link=7' name='query7'>Query 7</a>
-				<a href='query.php?link=8' name='query8'>Query 8</a>
-				<a href='query.php?link=9' name='query9'>Query 9</a>
-				<a href='query.php?link=10' name='query10'>Query 10</a>
+		<div class='query-select'>
+			<div class='query-text'>Select Which Query To Run</div>
+			<div class='dropdown-function'>
+				<button class='button'>Query Number</button>
+				<div id='dropdown-query' class='dropdown-content'>
+					<a href='query.php?link=1'>Query 1</a>
+					<a href='query.php?link=2' name='query2'>Query 2</a>
+					<a href='query.php?link=3' name='query3'>Query 3</a>
+					<a href='query.php?link=4' name='query4'>Query 4</a>
+					<a href='query.php?link=5' name='query5'>Query 5</a>
+					<a href='query.php?link=6' name='query6'>Query 6</a>
+					<a href='query.php?link=7' name='query7'>Query 7</a>
+					<a href='query.php?link=8' name='query8'>Query 8</a>
+					<a href='query.php?link=9' name='query9'>Query 9</a>
+					<a href='query.php?link=10' name='query10'>Query 10</a>
+				</div>
 			</div>
 		</div>
 		<form action="query.php" method="post" class='hidden'>
@@ -325,7 +319,7 @@
 	<div class='float-right'>
 		<form class='query' action="query.php" method="post">
 			<div class='query-1'>Purchase With Account Name</div>
-			<input class='query-2' name="account" type="text">
+			<input class='query-2' name="account" type="text" tabindex="1">
 			<div class='query-3'>Skin Theme</div>
 			<input class='query-4' name="theme" type="text">
 			<div class='query-5'>Hero Name</div>
@@ -340,7 +334,7 @@
 	<div class='float-left'>
 		<form class='query' action='query.php' method='post'>
 			<div class='query-1'>Add Points</div>
-			<input class='query-2' name="amount" type="text">
+			<input class='query-2' name="amount" type="text" tabindex="2">
 			<div class='query-3'>Account Name</div>
 			<input class='query-4' name="gameName" type="text">
 			<input class='query-5 button' value="Add Points" type="submit">
@@ -354,9 +348,9 @@
 	<div class='float-right'>
 		<form class='query' action='query.php' method='post'>
 			<div class='query-1'>Delete Which Account</div>
-			<input class='query-2' name="delete" type="text">
+			<input class='query-2' name="delete" type="text" tabindex="3">
 			<input class='query-3 button' value="Delete Account" type="submit">
-		</div>
+		</form>
 	</div>
 </div>
 <!-- STATIC TABLES -->
@@ -413,7 +407,7 @@
 	echo "<span class='table-title'>Accounts</span>";
 	echo "<table>\n\t
 		<tr>
-			<th>Game Name</th>   <th>Password</th>   <th>BE Balance</th>
+			<th>Game Name</th>   <th>Password</th>   <th>Blue Essence Balance</th>
 			<th>Riot Point Balance</th>   <th>Rank</th>   <th>Server Id</th>
 		</tr>
 	\n";
@@ -626,7 +620,8 @@
 	*/
 	################################################################################
 ?>
-</div>
-</div>
+</div> <!-- TABLES END -->
+</div> <!-- WEBPAGE END -->
+
 </body>
 </html>
