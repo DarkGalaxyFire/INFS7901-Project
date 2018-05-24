@@ -196,7 +196,6 @@
 		min-width: 180px;
 		font: inherit;
 		border-top: 2px solid #262626;
-		z-index: 10;
 	}
 	.dropdown-content a {
 		color: #c8aa6e;
