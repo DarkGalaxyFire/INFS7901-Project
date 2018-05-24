@@ -149,7 +149,6 @@
 		display: block;
 		margin-top: -2.5%;
 		width: 100%;
-		height: 300px;
 		clear: both;
 	}
 	.row-top {
@@ -171,8 +170,9 @@
 	.query-select {
 		position: absolute;
 		top: 200px;
-		left: 75px;
+		left: 10%;
 		width: 80%;
+		z-index: 100;
 	}
 	.query-text {
 		position: absolute;
@@ -226,6 +226,7 @@
 		font-weight: 700;
 		width: 400px;
 		font-size: 20px;
+		z-index: 100;
 	}
 	.query-1 {
 		position: absolute;
