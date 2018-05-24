@@ -173,6 +173,6 @@
 </div>
 <!-- ER Diagram -->
 <div class='webpage-body'>
-	<img class='image' src='diagram.png'>
+	<img class='image' src='diagram.png' title='ER Schema Diagram Used in this Project'>
 </div>
 </html>

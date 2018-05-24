@@ -327,7 +327,7 @@
 <!-- ROW 2 -->
 <div class='row clearfix row-top'>
 	<div class='float-right'>
-		<form class='query' action="query.php" method="post">
+		<form class='query' action="query.php" method="post" autocomplete="off">
 			<div class='query-1'>Purchase With Account Name</div>
 			<input class='query-2' name="account" type="text" tabindex="1">
 			<div class='query-3'>Skin Theme</div>
@@ -342,7 +342,7 @@
 <!-- ROW 3 -->
 <div class='row clearfix row-top'>
 	<div class='float-left'>
-		<form class='query' action='query.php' method='post'>
+		<form class='query' action='query.php' method='post' autocomplete="off">
 			<div class='query-1'>Add Points</div>
 			<input class='query-2' name="amount" type="text" tabindex="5">
 			<div class='query-3'>Account Name</div>
@@ -356,7 +356,7 @@
 <div class='row clearfix row-top'>
 	<img class='image float-left' src='cyberpop-zoe.png'>
 	<div class='float-right'>
-		<form class='query' action='query.php' method='post'>
+		<form class='query' action='query.php' method='post' autocomplete="off">
 			<div class='query-1'>Delete Which Account</div>
 			<input class='query-2' name="delete" type="text" tabindex="8">
 			<input class='query-3 button' value="Delete Account" type="submit" tabindex="9">
