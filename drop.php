@@ -52,9 +52,9 @@
 	}
 	.title {
 		position: absolute;
-		top: -2%;
+		top: 25%;
 		width: 40%;
-		left: 30%;
+		left: 55%;
 		display: block;
 	}
 	.header {
