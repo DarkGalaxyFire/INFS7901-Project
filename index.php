@@ -166,6 +166,10 @@
 		width: 50%;
 		float: right;
 	}
+	/* IMAGES */
+	.image {
+		margin-top: -0.06%;   /* fix whitespace issue from border-image in row-top class */
+	}
 	/* QUERY IN FIRST ROW WITH DROPDOWN MENU */
 	.query-select {
 		position: absolute;
