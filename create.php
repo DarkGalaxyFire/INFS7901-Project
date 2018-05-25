@@ -176,7 +176,7 @@
 	// Database information
 	$servername = "localhost";
 	$username = "root";
-	$password = "";
+	$password = "fabb639325845518";
 	$dbname = "project";
 
 	// Create connection
@@ -249,23 +249,23 @@ CREATE TABLE Products (
 	price	INT 		NOT NULL,
 	PRIMARY KEY (id)
 );
-INSERT INTO products VALUES (1, 260);
-INSERT INTO products VALUES (2, 260);
-INSERT INTO products VALUES (3, 880);
-INSERT INTO products VALUES (4, 880);
-INSERT INTO products VALUES (5, 880);
-INSERT INTO products VALUES (6, 975);
-INSERT INTO products VALUES (7, 750);
-INSERT INTO products VALUES (8, 1820);
-INSERT INTO products VALUES (9, 1350);
-INSERT INTO products VALUES (10, 1350);
-INSERT INTO products VALUES (11, 1350);
-INSERT INTO products VALUES (12, 0);
-INSERT INTO products VALUES (13, 0);
-INSERT INTO products VALUES (14, 0);
-INSERT INTO products VALUES (15, 0);
-INSERT INTO products VALUES (16, 0);
-INSERT INTO products VALUES (17, 0);
+INSERT INTO Products VALUES (1, 260);
+INSERT INTO Products VALUES (2, 260);
+INSERT INTO Products VALUES (3, 880);
+INSERT INTO Products VALUES (4, 880);
+INSERT INTO Products VALUES (5, 880);
+INSERT INTO Products VALUES (6, 975);
+INSERT INTO Products VALUES (7, 750);
+INSERT INTO Products VALUES (8, 1820);
+INSERT INTO Products VALUES (9, 1350);
+INSERT INTO Products VALUES (10, 1350);
+INSERT INTO Products VALUES (11, 1350);
+INSERT INTO Products VALUES (12, 0);
+INSERT INTO Products VALUES (13, 0);
+INSERT INTO Products VALUES (14, 0);
+INSERT INTO Products VALUES (15, 0);
+INSERT INTO Products VALUES (16, 0);
+INSERT INTO Products VALUES (17, 0);
 INSERT INTO Products VALUES (18, 520);
 INSERT INTO Products VALUES (19, 1350);
 INSERT INTO Products VALUES (20, 1350);
@@ -376,7 +376,6 @@ CREATE TABLE MatchHistory (
     position                VARCHAR(50) NOT NULL,
     heroName                VARCHAR(50) NOT NULL,
     skinTheme               VARCHAR(50) DEFAULT 'Classic',
-    /* CONSTRAINT checkSize CHECK (0 < partySize AND partySize <= 5), */
     PRIMARY KEY (gameName, startTimestamp),
     FOREIGN KEY (gameName) REFERENCES Accounts(gameName) ON DELETE CASCADE,
     FOREIGN KEY (heroName) REFERENCES Heroes(name) ON DELETE CASCADE,

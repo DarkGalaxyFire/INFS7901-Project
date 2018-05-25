@@ -373,7 +373,7 @@
 	// Database information
 	$servername = "localhost";
 	$username = "root";
-	$password = "";
+	$password = "fabb639325845518";
 	$dbname = "project";
 
 	// Create connection

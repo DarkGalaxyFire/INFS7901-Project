@@ -211,7 +211,7 @@
 		// Database information
 		$servername = "localhost";
 		$username = "root";
-		$password = "";
+		$password = "fabb639325845518";
 		$dbname = "project";
 
 		// Create connection
@@ -279,7 +279,7 @@ WHERE gameName = '$gameName';
 		// Database information
 		$servername = "localhost";
 		$username = "root";
-		$password = "";
+		$password = "fabb639325845518";
 		$dbname = "project";
 
 		// Create connection
@@ -509,12 +509,12 @@ SELECT gameName, seasonRank FROM Accounts;
 
 		elseif ($num == 4) {
 			$create = "
-CREATE VIEW numberSkins AS
+CREATE VIEW NumberSkins AS
     /* return the name of hero, number of skins that hero has */
     SELECT name AS HeroName, count(name) AS NumberOfSkins
-    FROM heroes
-    JOIN skins
-    ON heroes.name = skins.heroname
+    FROM Heroes
+    JOIN Skins
+    ON Heroes.name = Skins.heroname
     /* group by each hero */
     GROUP BY name
     ORDER BY name;
@@ -535,17 +535,17 @@ CREATE VIEW MaxPrice AS
     /* return the price of the most expensive skin */
     SELECT heroName, max(price) AS maxPrice
     /* get table of hero skin information */
-    FROM products
-    JOIN skins
-    ON products.Id = skins.productId
+    FROM Products
+    JOIN Skins
+    ON Products.Id = Skins.productId
     /* group into categories of each hero */
     GROUP BY heroName;
 
 CREATE VIEW ProductsSkins AS
     /* to store results of join on products and skins tables */
     SELECT *
-    FROM products, skins
-    WHERE products.Id = skins.productId;
+    FROM Products, Skins
+    WHERE Products.Id = Skins.productId;
 
 CREATE VIEW MaxPriceSkin AS
     /* return each skin found and the details about each skin */
@@ -574,9 +574,9 @@ DROP VIEW MaxPriceSkin;
 CREATE VIEW ProductsOwns AS
     SELECT *
     /* get table of products that each account owns */
-    FROM products
-    JOIN owns
-    ON products.id = owns.productId;
+    FROM Products
+    JOIN Owns
+    ON Products.id = Owns.productId;
 
 CREATE VIEW SpendHistory AS
     /* get the account name, total spend amount, number of purchases */
@@ -642,9 +642,9 @@ DROP VIEW OwnsAll;
 CREATE VIEW ProductsOwns AS
     SELECT *
     /* get table of products that each account owns */
-    FROM products
-    JOIN owns
-    ON products.id = owns.productId;
+    FROM Products
+    JOIN Owns
+    ON Products.id = Owns.productId;
 
 CREATE VIEW AveragePurchase AS
     SELECT gameName, AVG(price) AS averagePrice
@@ -674,9 +674,9 @@ SELECT * FROM AveragePurchase;
 CREATE VIEW ProductsOwns AS
 	SELECT *
 	/* get table of products that each account owns */
-	FROM products
-	JOIN owns
-	ON products.Id = owns.productId;
+	FROM Products
+	JOIN Owns
+	ON Products.Id = Owns.productId;
 
 CREATE VIEW PriceFilter AS
 	/* return the average price of items bought for each player */
@@ -748,7 +748,7 @@ DROP VIEW SkinsNotOwned;
 		// Database information
 		$servername = "localhost";
 		$username = "root";
-		$password = "";
+		$password = "fabb639325845518";
 		$dbname = "project";
 
 		// Create connection
