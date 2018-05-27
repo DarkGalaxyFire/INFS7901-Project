@@ -22,6 +22,9 @@
 		background-color: #f1f1f1;
 		color: #333;
 	}
+	::selection {
+		background-color: #a5ffba;
+	}
 	/* STYLING FOR ALL TABLES SHARED ACROSS ALL PAGES */
 	table {
 	    border-collapse: collapse;
@@ -369,8 +372,8 @@ INSERT INTO Skins VALUES ('Blood Lord', 'Vladimir', 22, 'Legendary');
 
 CREATE TABLE MatchHistory (
     gameName                VARCHAR(50) NOT NULL,
-    startTimestamp          TIMESTAMP   NOT NULL,
-    endTimestamp            TIMESTAMP   NOT NULL,
+    startTimestamp          DATETIME    NOT NULL,
+    endTimestamp            DATETIME    NOT NULL,
     result                  VARCHAR(5)  NOT NULL,
     partySize               INT         DEFAULT 1,
     position                VARCHAR(50) NOT NULL,

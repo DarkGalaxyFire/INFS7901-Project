@@ -22,6 +22,9 @@
 		background-color: #f1f1f1;
 		color: #333;
 	}
+	::selection {
+		background-color: #a5ffba;
+	}
 	/* STYLING FOR ALL TABLES SHARED ACROSS ALL PAGES */
 	table {
 	    border-collapse: collapse;
